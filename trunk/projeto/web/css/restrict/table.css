@@ -1,0 +1,73 @@
+
+.center{
+    text-align: center;
+}
+
+table.crud {
+    width: 100%;
+    border: 0;
+}
+
+table.crud th {
+    background-color: whiteSmoke;
+    border: 1px solid #E8E8E8;
+    padding: 7px 13px;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+table.crud.trescell th.date {
+    width: 77px;
+}
+
+table.crud.trescell th.login {
+    width: 135px;
+}
+
+table.crud.trescell th.content-tab {
+    width: 400px;
+}
+
+table.crud.trescell th.action-list-ex {
+    width: 173px;
+}
+
+table.crud.doiscell th.date {
+    width: 98px;
+}
+
+table.crud.doiscell th.content-tab {
+    width: 655px;
+}
+
+table.crud h5 {
+    color: #333;
+    font-size: 16px;
+    font-weight: normal;
+    letter-spacing: -0.03em;
+    line-height: 18px;
+}
+
+table.crud td {
+    color: #474747;
+    vertical-align: middle;
+    border: 1px solid #E8E8E8;
+    padding: 7px 13px;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+td.msg-table {
+    position: relative;
+    background-color: #F9F9F9;
+}
+
+td.msg-table h5, div.msg-table h5 {
+    font-size: 13px;
+    text-shadow: 1px 1px 1px #FFF;
+}
+
+table.crud tr.zebra td {
+    background: #F9F9F9;
+}

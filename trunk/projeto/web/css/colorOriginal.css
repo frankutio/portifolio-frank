@@ -1,0 +1,156 @@
+/*
+projeto: frankBezerra.com.br
+arquivo: colorOriginal.css
+autor: Frank Bezerra - frankutio@gmail.com, frankutio@hotmail.com
+resumo: Formata e define as cores do sistema, assim como formata as imagens.
+*/
+
+#head .logo{
+	background: url("/img/logo.png") no-repeat 0 0 #FFF;
+}
+
+#faixa-top{
+	background: url("/img/bg-faixa.jpg") repeat-x left top #555555;
+}
+
+.presentation h1{
+	color: #FFF;
+	text-shadow: 1px 1px 0 #000000;
+	font-weight: normal;
+}
+
+.presentation h1 span.underline{
+	text-decoration: underline;
+}
+
+/* Formatação das fotos - Inicio */
+
+div.foto span {
+    background: url("/img/canto-foto-arredondado.png") no-repeat 0 0;
+    color: #646464;
+}
+
+.foto span.canto-ce {
+    background-position: 0 0;
+}
+
+.foto span.canto-cd {
+    background-position: -3px 0;
+}
+
+.foto span.canto-re {
+    background-position:  0 -3px;
+}
+
+.foto span.canto-rd {
+    background-position:  -3px -3px;
+}
+    /* Formatação das fotos - Fim */
+
+
+/* Caixas sobre Trabalhos */
+
+.home-about div.about-F{
+    border-bottom: 1px dotted #DDE5E8;
+}
+
+.about-F .number-content{
+    color: #F0F4F5;
+    font-size: 30em;
+}
+
+.about-F .item-content{
+    color: #666666;
+}
+
+.about-F h2{
+    font-size: 28px;
+    color: #474747;
+}
+
+.about-F span.item-link{
+    font-size: 18px;
+}
+
+div.about1{
+    background: url("/img/med-bg.png") no-repeat 570px 190px;
+}
+
+div.about2{
+    background: url("/img/mir-bg.png") no-repeat 115px 191px;
+}
+
+	/* Desabilitar conforme necessário 
+
+
+div.about3{
+    background: url("/resources/new_template/image/demo/espaco-saude-bg.png") no-repeat 570px 192px;
+}
+
+div.about4{
+    background: url("/resources/new_template/image/demo/rede-bg.png") no-repeat 115px 218px;
+}
+
+div.about5{
+    background: url("/resources/new_template/image/demo/conteudo-bg.png") no-repeat 570px 192px;
+}
+
+	*/
+/* Caixas sobre Trabalhos */
+
+#footer {
+	color: #FFF;
+    background-color: #414141;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2b2b2b), to(#414141));
+    background: -webkit-linear-gradient(top, #414141, #2b2b2b);
+    background: -moz-linear-gradient(top, #414141, #2b2b2b);
+    background: -ms-linear-gradient(top, #414141, #2b2b2b);
+    background: -o-linear-gradient(top, #414141, #2b2b2b);
+
+}
+
+/* Titulos e faixas - inicio */
+div.faixa-title.contraste{
+	color: #FFF;
+}
+
+div.faixa-title.ico-login{
+	background: url("/img/icones/ico_login_contraste.png") no-repeat 0 0;
+}
+
+div.faixa-title.ico-painel{
+	background: url("/img/icones/ico_home_contraste.png") no-repeat 0 0;
+}
+
+div.faixa-title.ico-sessao{
+	background: url("/img/icones/ico_current_contraste.png") no-repeat 0 0;
+}
+/* Titulos e faixas - fim */
+
+/* Box - inicio */
+.box-shadow-droid{
+	box-shadow: 0 2px 23px #414141;
+	border: solid 1px #ADADAD;
+	padding: 3px;
+}
+
+.box-shadow-droid.form-full{
+	box-shadow: none;
+}
+
+.box-shadow-droid .title{
+	background: url("/img/bg-title-box.png") repeat-x 0 0;
+	color: #FFF;
+}
+
+.box-shadow-droid .title h3{
+	background: url("/img/icones/ico_geral_contraste_32.png") no-repeat 6px 3px;
+	font-size: 16px;
+	padding: 10px 0px 10px 51px;
+}
+
+.box-shadow-droid .box-content{
+	padding: 6px;
+	margin-top: 20px;
+}
+/* Box - fim */

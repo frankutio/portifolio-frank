@@ -1,0 +1,107 @@
+/*
+projeto: frankBezerra.com.br
+arquivo: restrict/geral.css
+autor: Frank Bezerra - frankutio@gmail.com, frankutio@hotmail.com
+resumo: Formata e diagrama as estruturas do layout na area restrita.
+*/
+
+.menu-cms{
+    position: relative;
+    z-index: 3000;
+}
+
+.menu-cms .menu-tabs{
+    left: 0px;
+    top: -15px;
+}
+
+.menu-cms .navigation li > .menu-head-item{
+    -webkit-border-radius: 0 0 3px 3px;
+    -moz-border-radius: 0 0 3px 3px;
+    border-radius: 0 0 3px 3px;
+}
+
+.menu-cms .navigation li.menu-head{
+    padding: 0 0 0.25em 0;
+}
+
+.menu-cms .navigation li > ul{
+    top: 30px;
+}
+
+.menu-cms .navigation li ul li ul{
+    top: 0px;
+}
+
+.content{
+    margin-top: 40px;
+    z-index: 100;
+}
+
+.box-content-photo {
+    position: relative;
+    display: block;
+    height: 127px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.box-content-photo div.slide-bt {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 125px;
+    background: url("/img/trans-back.png") repeat 0 0;
+    margin-right: 10px;
+}
+
+.box-content-photo .slide-bt a {
+    display: block;
+    padding: 10px;
+    color: #FFF;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+div.inside-collumns {
+    position: relative;
+    padding: 30px 0 5px 0;
+}
+
+.grid_20.collumn-inside-center-full{
+    width: 783px;
+}
+
+div.collumn-inside-center, div.collumn-inside-center-full{
+    height: auto;	
+    border-left: 1px solid #C4CBCC;
+    padding-left: 11px;	
+    margin-right: 0px;
+    padding-right: 0px;
+    min-height: 531px;
+}
+
+div.band-title-gear {
+    background: url("/img/sprite_icon_global.png") no-repeat 6px -46px #E2E2E2;
+    color: #474747;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 5px 0 2px 18px;
+}
+
+.collumn-inside-center-full div.band-title-gear:first-child{
+    margin-top: 0px;
+}
+
+div.band-title-gear span {
+    display: block;
+    background: #E2E2E2;
+}
+
+.menu-gear h4{
+    font-size: 14px;
+    font-weight: normal;
+}

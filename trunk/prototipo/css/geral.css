@@ -1,0 +1,198 @@
+/*
+projeto: frankBezerra.com.br
+arquivo: geral.css
+autor: Frank Bezerra - frankutio@gmail.com, frankutio@hotmail.com
+resumo: Formata e diagrama as estruturas do layout.
+*/
+
+.text-left{
+	text-align: left;
+}
+
+
+#head .container_24{
+	padding: 25px 0 0 0;
+}
+
+.top-head{
+	position: relative;
+}
+
+#head .logo{
+	float: left;
+	height: 85px;
+	overflow: hidden;
+	width: 587px;
+	text-indent: -9999em;
+}
+
+#faixa-top{
+	clear: both;
+    display: block;
+    padding: 10px;
+}
+
+#container{
+	margin-top: 15px;
+	min-height: 600px;
+}
+
+.presentation h1{
+	font-size: 14px;
+}
+
+/* Formatação das fotos - Inicio */
+div.foto {
+    float: left;
+    margin: 0 1em 0 0;
+    position: relative;
+}
+div.foto{
+    margin-right: 10px;
+}
+
+div.foto a{
+    margin: 0 !important;
+}
+
+ div.foto span {
+    display: block;
+    height: 3px;
+    position: absolute;
+    width: 3px;
+    text-align: center;
+    font-size: 8pt;
+}
+.foto span.canto-ce {
+    left: 0;
+    top: 0;
+}
+.foto span.canto-cd {
+    right: 0;
+    top: 0;
+}
+.foto span.canto-re {
+    bottom: 0;
+    left: 0;
+}
+.foto span.canto-rd {
+    bottom: 0;
+    right: 0;
+}
+    /* Formatação das fotos - Fim */
+	
+
+/* Caixas sobre Trabalhos */
+
+.home-about {
+    margin-top: 52px;
+    padding: 0 13px;
+} 
+
+.home-about div.about-F{
+	position: relative;
+    padding-bottom: 16px;
+}
+
+.about-F .number-content{
+    line-height: 1em;
+    margin: 0;
+    position: absolute;
+}
+
+.about-F .item-content{
+    position: absolute;
+    width: 455px;
+}
+
+.about1 .item-content, .about3 .item-content, .about5 .item-content{
+    right: 22px;
+    top: 36px;
+}
+
+.about-F h2{
+    line-height: 1em;
+    margin-bottom: 18px;
+}
+
+.about-F img{
+	cursor: pointer;
+}
+
+.about-F p.item-description{
+    font-size: 13px;
+    line-height: 1.4em;
+    margin-bottom: 5px;
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+.about2, .about4{
+    padding-top: 2em;
+    text-align: right;
+}
+
+.about-F.about2 .item-content, .about-F.about4 .item-content{
+    left: 22px;
+    text-align: left;
+    top: 61px;
+}
+
+.home-about div.button-content{
+    padding: 5px;
+    text-align: center;
+}
+
+/* Caixas sobre Trabalhos */
+
+#footer {
+    position: relative;
+    width: 100%;
+	min-height: 70px;
+    margin-top: 30px;
+}
+
+#footer .copy{
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	bottom: 0px;
+	font-size: 10px;
+}
+
+/* Titulos e faixas - inicio */
+div.faixa-title{
+	height: 40px;
+	text-align: left;
+	padding: 10px 0 0 67px;
+}
+
+div.faixa-title h2{
+	font-size: 26px;
+}
+/* Titulos e faixas - fim */
+
+/* Box - inicio */
+.box-shadow-droid{
+	width: 558px;
+	min-height: 308px;
+	margin: 0 auto;
+	margin-top: 20px;
+	border-radius: 0px 0px 5px 5px;
+}
+
+.box-shadow-droid.form-full{
+	width: 764px;
+	min-height: 308px;
+	margin: 54px 0 0 0;
+}
+
+.box-shadow-droid.box-login{
+	margin-top: 113px;
+}
+/* Box - fim */
+
+div.foto {
+	float: left;
+	margin: 0 1em 0 0;
+	position: relative;
+}

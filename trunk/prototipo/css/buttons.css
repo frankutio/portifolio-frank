@@ -1,0 +1,101 @@
+
+
+a.button-gray, #img-galery a.botao, input[type=submit].button-gray{
+    display: inline-block;
+    background: #F6F6F6;
+    background: -moz-linear-gradient(center top , #FFFFFF, #EFEFEF) repeat 0 0 #F6F6F6;
+    background: -webkit-gradient(linear,left top,left bottom,from(#ffffff),to(#efefef)) repeat 0 0 #F6F6F6;
+    filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#FFFFFF,endColorStr=#EFEFEF);
+    color: #333333;
+    cursor: pointer;
+    height: 2.0833em;
+    padding: 0 0.5em;
+    vertical-align: middle;
+    white-space: nowrap;    
+    border: 1px solid #CCCCCC;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-decoration: none;
+    line-height: 28px;
+}
+
+input[type=submit].button-gray{
+    font-weight: normal;
+    font-size: 14px;
+    text-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+a.button-gray:hover, #img-galery a.botao:hover, input[type=submit].button-gray:hover{
+    background: -moz-linear-gradient(center top , #FFFFFF, #EBEBEB) repeat 0 0 #F3F3F3;
+    background: -webkit-gradient(linear,left top,left bottom,from(#ffffff), to(#EBEBEB)) repeat 0 0 #F3F3F3;
+    filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#FFFFFF,endColorStr=#EBEBEB);
+    -moz-box-shadow: 0 0 3px #999999;
+    -webkit-box-shadow: 0 0 3px #999999;
+    box-shadow: 0 0 3px #999999;
+    border-color: #999999;
+    outline: 0 none;
+}
+
+.bt-img span, a span.img{
+    display: block;
+    background: url("../img/icones/ico-sprit-bt.png") no-repeat 0 4px;
+    width: 20px;
+    height: 2.0833em;
+}
+
+a span.img{
+    width: auto;
+    padding-left: 28px;
+}
+
+.bt-img.edit span{
+    background-position: 0 -77px;
+}
+
+.bt-img.view span, a span.img.view{
+    background-position: 0 -118px;
+}
+
+.bt-img.map span, a span.img.map{
+    background-position: 2px -325px;
+}
+
+.bt-img.alt-map span, a span.img.alt-map{
+    background-position: 2px -526px;
+}
+
+.bt-img.del span{
+    background-position: 0 -36px;
+}
+
+.bt-img:hover span{
+    background-position: 0 -161px;
+}
+
+.bt-img.edit:hover span{
+    background-position: 0 -242px;
+}
+
+.bt-img.view:hover span, a.button-gray:hover span.view{
+    background-position: 0 -283px;
+}
+
+.bt-img.map:hover span, a.button-gray:hover span.img.map{
+    background-position: 1px -370px;
+}
+
+.bt-img.map:hover span, a.button-gray.disable:hover span.img.map{
+    background-position: 2px -325px;
+}
+
+.bt-img.alt-map:hover span, a.button-gray:hover span.img.alt-map{
+    background-position: 2px -486px;
+}
+
+.bt-img.del:hover span{
+    background-position: 0 -201px;
+}
