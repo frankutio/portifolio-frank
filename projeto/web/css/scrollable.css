@@ -1,0 +1,75 @@
+/*
+root element for the scrollable.  when scrolling occurs this
+element stays still.
+*/
+.scrollable {
+    /* required settings */
+    position:relative;
+    overflow:hidden;
+    width: 640px;
+    height: 514px;
+    margin-left: 8px;
+}
+/*
+root element for scrollable items. Must be absolutely positioned
+and it should have a extremely large width to accommodate scrollable
+items.  it's enough that you set width and height for the root element
+and not for this element.
+*/
+.scrollable .items {
+    /* this cannot be too large */
+    width:20000em;
+    position:absolute;
+}
+/*
+a single item. must be floated in horizontal scrolling.  typically,
+this element is the one that *you* will style the most.
+*/
+.items div {
+    float:left;
+}
+.items .details {
+    float: none;
+}
+
+
+
+
+/* prev, next, prevPage and nextPage buttons */
+a.browse {
+    position: absolute;
+    top: 146px;
+    background: url("/img/setas.png") no-repeat;
+    display: block;
+    width: 59px;
+    height: 105px;
+    margin: 40px 10px;
+    cursor: pointer;
+    font-size: 1px;
+    z-index: 99999999;
+    text-indent: -12999em;
+}
+
+a.browse:focus, a.browse:active{
+    outline: 0 none;
+}
+
+/* right */
+a.right {
+    background-position: -61px 0px;
+    clear: right;
+    margin-right: 0px;
+    right: 42px;
+}
+
+
+/* left */
+a.left {
+    margin-left: 0px;
+    left: 44px;
+}
+
+/* disabled navigational button */
+a.disabled {
+    visibility:hidden !important;
+}

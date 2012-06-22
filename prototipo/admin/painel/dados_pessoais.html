@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Painel de Administrativo</title>
+
+<link type="text/css" rel="stylesheet" href="../../css/960_24_col_rtl.css" />
+<link type="text/css" rel="stylesheet" href="../../css/reset.css" />
+<link type="text/css" rel="stylesheet" href="../../css/text.css" />
+<link type="text/css" rel="stylesheet" href="../../css/geral.css" />
+<link type="text/css" rel="stylesheet" href="../../css/colorOriginal.css" />
+<link type="text/css" rel="stylesheet" href="../../css/overlay-apple.css" />
+<link type="text/css" rel="stylesheet" href="../../css/scrollable.css" />
+<link type="text/css" rel="stylesheet" href="../../css/menu.css" />
+<link type="text/css" rel="stylesheet" href="../../css/forms.css" />
+<link type="text/css" rel="stylesheet" href="../../css/restrict/geral.css" />
+<link type="text/css" rel="stylesheet" href="../../css/restrict/table.css" />
+
+
+<script type="text/javascript" src="../../js/tabela.zebrada.js"></script>
+<script type="text/javascript" src="../../js/lib/tiny/tiny_mce.js"></script>
+<script type="text/javascript" src="../../js/lib/tiny/editor-custon.js"></script>
+
+
+</head>
+
+<body>
+
+<div id="head">
+  <div class="container_24 top-head">
+    <div class="logo aling-left">
+    	<a href="#">Frank Bezerra, desenvolvedor de interfaces Web, Brasilía - DF</a>
+    </div>     
+    <div class="clear"></div>
+  </div>
+</div>
+
+<div id="faixa-top">
+
+  <div class="container_24">
+<div class="faixa-title contraste ico-sessao"> 
+    	<h2>Dados Pessoais</h2>   	
+    </div>
+    
+  </div>
+  
+</div>
+
+<div id="container" class="container_24 text-left">
+
+	<div class="menu-cms">
+    	<div class="menu-tabs">
+    	<ul class="navigation">
+        	<li class="menu-head">
+            	<span class="menu-head-item drop">Perfil</span>
+                <ul>
+                	<li><a href="index.html">Home</a></li>                    
+                    <li>
+                    	<span>Dados cadastrais</span>
+                        <ul>
+                        	<li><a href="dados_pessoais.html">Dados Pessoais</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                    	<span>Minha conta</span>
+                        <ul>
+                        	<li><a href="senha.html">Alterar senha</a></li>
+                        </ul>
+                    </li>
+                </ul>                
+            </li>
+            <li class="menu-head">
+            	<span class="menu-head-item drop">Portifólio</span>
+                <ul>
+                	<li><a href="portifolio/adcionar.html">Adicionar Portifólio</a></li> 
+                    <li><a href="portifolio/administrar.html">Administrar Portifólio</a></li>  
+                </ul>
+            </li>
+            <li class="menu-head">
+            	<span class="menu-head-item drop">Galeria</span>
+                <ul>
+                	<li><a href="galeria/adcionar.html">Adicionar Foto</a></li> 
+                    <li><a href="galeria/administrar.html">Administrar Galeria</a></li>  
+                </ul>
+            </li>
+            <li class="menu-head">
+            	<span class="menu-head-item drop">Usuários</span>
+                <ul>
+                	<li><a href="usr/adcionar.html">Adicionar Usuário</a></li> 
+                    <li><a href="usr/administrar.html">Administrar Usuários</a></li>  
+                </ul>
+            </li>
+        </ul>
+    </div>
+     
+    <div class="clear"></div>
+    </div>
+    
+    <div class="content">
+    	
+        <div class="box-shadow-droid form-standard form-full">
+        	<div class="title">
+                <h3>Meus Dados Pessoais</h3>
+            </div>
+            <div class="box-content">
+            	<form name="profile" action="#" method="post" id="form-dados-pessoais">
+                    <dl>
+                        <dt><label for="nome">Nome</label></dt>
+                        <dd><input type="text" name="name" id="nome" /></dd>
+                        <dt><label for="login">Login</label></dt>
+                        <dd><input type="text" name="login" id="login" /></dd>
+                        <dt><label for="email">E-mail</label></dt>
+                        <dd><input type="text" name="email" id="email" /></dd>
+                        <dt><label for="dat_nascimento">Data de Nascimento</label></dt>
+                        <dd><input type="text" name="dat_nascimento" class="date" id="dat_nascimento" /></dd>                        
+                        <dt>
+                        	<div class="info-form">Escreva abaixo, um breve resumo sobre você como profissional, este resumo aparecerá em seu portifólio</div>
+                        </dt>
+                        <dt><label for="about">Sobre mim</label></dt>
+                        <dd>
+                        	<textarea name="about" id="about" class="rich-text-medium"></textarea>
+                            <span class="count">397</span>
+                        </dd>
+                        <dt></dt>
+                        <dd class="submit-element"><input type="submit" value="Atualizar" /></dd>
+                    </dl>
+                </form>
+            </div>        	
+        </div>
+        
+        <div class="clear"></div>
+        
+    </div>
+	
+</div>
+
+<div id="footer" class="container_24">
+	<div class="copy">
+    	&copy; Frank Bezerra Simião
+    </div>
+</div>
+
+
+</body>
+</html>

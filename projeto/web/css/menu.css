@@ -1,0 +1,158 @@
+/*
+projeto: frankbezerra.com
+arquivo: menu.css
+autor: Frank Bezerra - frankutio@gmail.com
+resumo: Formatação geral do menu.
+*/
+
+.menu-tabs{
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+}
+
+ul.navigation{
+    list-style: none;
+	display: table;
+    height: auto;
+    margin: 0 0 0 21px;    
+    white-space: nowrap;
+}
+
+.navigation li{
+    position: relative;
+    float: left;
+    list-style: none;
+    margin-left: 5px;
+    padding: 0.25em 0 0 0;
+}
+
+ul.navigation > li:first-child {
+    cursor: pointer;
+}
+
+.navigation li > ul{
+    position: absolute;
+    visibility: hidden;
+    width: 227px;
+    background: #FFF;
+    border: solid 2px #CCCCCC;
+}
+
+.navigation li:hover ul{
+    visibility: visible;
+}
+
+.navigation li ul li > ul{
+    position: relative;
+    margin-left: 20px;
+}
+
+.navigation li ul > li{
+    float: none;
+    margin: 0;
+	text-align: left;
+}
+
+.navigation li ul li > a{
+    display: block;
+    border-left: 3px solid #FFFFFF;
+    padding: 2px 0 2px 17px;
+    font-size: 14px;
+    white-space: normal;
+    width: 92%;
+    color: #0099CC;
+}
+
+.navigation li ul li > a:hover{
+    border-left: 3px solid #FB7715;
+    color: #A80000;
+    text-decoration: none;
+}
+
+.navigation li ul li.active__ > a{
+    border-left: 3px solid #0099CC;
+    color: #A80000;
+    text-decoration: none;
+}
+
+.navigation li > .menu-head-item{
+    display: block;
+    background: url("/img/bg-menu.png") repeat-x 0 0 #EDEEEF;
+    border-bottom: none;
+    color: #000;    
+    font-size: 12px;
+    font-weight: bold;    
+    -webkit-border-radius: 3px 3px 0 0;
+    -moz-border-radius: 3px 3px 0 0;
+    border-radius: 3px 3px 0 0;
+    border: solid 1px #D3D5D6;
+}
+
+.navigation li > .menu-head-item a, .navigation li > .menu-head-item.drop{
+	display: block;
+	padding: 7px 10px;
+	color: #000;
+}
+
+.navigation li.menu-head:hover .menu-head-item{
+    background: url("/img/bg-menu.png") repeat-x 0 -83px #FC842C;
+    color: #FFF;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px #474747;
+    cursor: pointer;
+	border-color: #9D9EA0;
+}
+
+.navigation li.menu-head:hover .menu-head-item a, .navigation li.menu-head:hover .menu-head-item.drop{
+	color: #FFF;
+}
+
+.navigation li.menu-head .menu-head-item.active__{
+    background: url("/img/bg-menu.png") repeat-x 0 -40px #FB7715;
+    color: #FFF;
+    text-shadow: 1px 1px 1px #474747;
+    cursor: pointer;
+	border-color: #9D9EA0;
+}
+
+.navigation li.menu-head .menu-head-item.active__ a{
+    color: #FFF;
+}
+
+.navigation li > ul{
+    top: 40px;
+    left: 0px;
+}
+
+.navigation li.menu-head:hover ul li > span{
+    display: block;
+    background: url("/img/sprite_icon_global.png") no-repeat scroll 6px -48px #E2E2E2;
+    border: none;
+    font-weight: bold;
+    margin-top: 3px;
+    padding: 2px 0 2px 18px;
+    -webkit-border-radius: none;
+    -moz-border-radius: none;
+    border-radius: none;
+    color: #474747;    
+    font-size: 14px;
+    text-shadow: none;
+    cursor: default;
+}
+
+.navigation li ul li > span:hover{
+    background: url("/img/sprite_icon_global.png") no-repeat scroll 6px -48px #E2E2E2;
+    color: #474747;   
+    text-shadow: none;
+}
+
+.navigation li ul li ul{
+    position: relative;
+    top: 0;
+    width: 100%;
+    border: none;
+    margin: 0 0 7px 0;
+    padding: 0;
+    -moz-box-shadow: none;
+}

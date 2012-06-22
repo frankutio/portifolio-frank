@@ -1,0 +1,69 @@
+/*
+projeto: frankbezerra.com
+arquivo: text.css
+autor: Frank Bezerra - frankutio@gmail.com
+resumo: arquivo responsável pela tipografia do site
+*/
+
+body {
+    font-family: Verdana, Geneva, sans-serif;
+	padding: 10px 0;
+	text-align: center;
+}
+
+a{
+	color: #0099CC;
+	text-decoration: none;
+}
+
+a:focus,a:active {
+    outline:1px dotted;
+}
+a:hover{
+    text-decoration: underline;
+}
+
+h1 {
+    font-size:25px;
+}
+h2 {
+    font-size:23px;
+}
+h3 {
+    font-size:21px;
+}
+h4 {
+    font-size:19px;
+}
+h5 {
+    font-size:17px;
+}
+h6 {
+    font-size:15px;
+}
+ol {
+    list-style:decimal outside none;
+}
+
+li {
+    margin-left:30px;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td, a {
+    margin: 0;
+    outline: medium none;
+    padding: 0;
+}
+
+dd{
+        padding-bottom: 10px;
+}
+
+
+.aling-left{
+	text-align: left;
+}
+
+.aling-right{
+	text-align: right;
+}
