@@ -14,6 +14,7 @@
         <%@ include file="/partials/restrict/headLinks_css.jsp" %>
 
         <%@ include file="/partials/headLinks_js.jsp" %>
+        <%@ include file="/partials/restrict/headLinks_js.jsp" %>
 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
@@ -23,15 +24,7 @@
 
     <body>
 
-        <div id="head">
-            <div class="container_24 top-head">
-                <div class="logo aling-left">
-                    <a href="#">Frank Bezerra, desenvolvedor de interfaces Web, Brasilía - DF</a>
-                </div>
-                <%@include file="/partials/menu/menu.jsp" %>
-                <div class="clear"></div>
-            </div>
-        </div>
+        <%@ include file="/partials/head.jsp" %>
 
         <div id="faixa-top">
 

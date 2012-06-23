@@ -79,6 +79,54 @@ public class ServletNavigation extends HttpServlet {
 
         }
 
+        else if (nav.equals("cmsPortifolio")) {
+
+            String action = request.getParameter("action");
+
+            if(action.equals("adicionar_portifolio")){
+                proximaPagina = "/admin/painel/portifolio/adicionar_portifolio.jsp";
+            }
+
+            else if(action.equals("adm_portifolio")){
+                proximaPagina = "/admin/painel/portifolio/adm_portifolio.jsp";
+            }
+
+            request.getSession().setAttribute("local", "restrict");
+
+        }
+
+        else if (nav.equals("cmsGaleria")) {
+
+            String action = request.getParameter("action");
+
+            if(action.equals("adicionar_foto")){
+                proximaPagina = "/admin/painel/galeria/adicionar_foto.jsp";
+            }
+
+            else if(action.equals("adm_galeria")){
+                proximaPagina = "/admin/painel/galeria/adm_galeria.jsp";
+            }
+
+            request.getSession().setAttribute("local", "restrict");
+
+        }
+
+        else if (nav.equals("cmsUser")) {
+
+            String action = request.getParameter("action");
+
+            if(action.equals("adicionar_usuario")){
+                proximaPagina = "/admin/painel/user/adicionar_usuario.jsp";
+            }
+
+            else if(action.equals("adm_usuario")){
+                proximaPagina = "/admin/painel/user/adm_usuario.jsp";
+            }
+
+            request.getSession().setAttribute("local", "restrict");
+
+        }
+
 
         //PARA DIRECIONAR AS PAGINAS PARA O LOCAL CERTO.
         RequestDispatcher rd = request.getRequestDispatcher(proximaPagina);

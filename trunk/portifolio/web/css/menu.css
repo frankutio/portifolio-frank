@@ -6,14 +6,14 @@ resumo: Formatação geral do menu.
 */
 
 .menu-tabs{
-	position: absolute;
-	right: 0px;
-	bottom: 0px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
 }
 
 ul.navigation{
     list-style: none;
-	display: table;
+    display: table;
     height: auto;
     margin: 0 0 0 21px;    
     white-space: nowrap;
@@ -51,7 +51,7 @@ ul.navigation > li:first-child {
 .navigation li ul > li{
     float: none;
     margin: 0;
-	text-align: left;
+    text-align: left;
 }
 
 .navigation li ul li > a{
@@ -90,9 +90,9 @@ ul.navigation > li:first-child {
 }
 
 .navigation li > .menu-head-item a, .navigation li > .menu-head-item.drop{
-	display: block;
-	padding: 7px 10px;
-	color: #000;
+    display: block;
+    padding: 7px 10px;
+    color: #000;
 }
 
 .navigation li.menu-head:hover .menu-head-item{
@@ -101,11 +101,11 @@ ul.navigation > li:first-child {
     text-decoration: none;
     text-shadow: 1px 1px 1px #474747;
     cursor: pointer;
-	border-color: #9D9EA0;
+    border-color: #9D9EA0;
 }
 
 .navigation li.menu-head:hover .menu-head-item a, .navigation li.menu-head:hover .menu-head-item.drop{
-	color: #FFF;
+    color: #FFF;
 }
 
 .navigation li.menu-head .menu-head-item.active__{
@@ -113,10 +113,15 @@ ul.navigation > li:first-child {
     color: #FFF;
     text-shadow: 1px 1px 1px #474747;
     cursor: pointer;
-	border-color: #9D9EA0;
+    border-color: #9D9EA0;
 }
 
-.navigation li.menu-head .menu-head-item.active__ a{
+.navigation li.menu-head .menu-head-item.logout{
+    background: url("/img/bg-menu.png") repeat-x 0 -135px #FD1A1A;
+    text-shadow: 1px 1px 1px #474747;
+}
+
+.navigation li.menu-head .menu-head-item.active__ a, .navigation li.menu-head .menu-head-item.logout a{
     color: #FFF;
 }
 

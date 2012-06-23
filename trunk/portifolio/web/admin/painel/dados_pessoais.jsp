@@ -9,7 +9,8 @@
         <%@ include file="/partials/headLinks_css.jsp" %>
         <%@ include file="/partials/restrict/headLinks_css.jsp" %>
         
-        <%@ include file="/partials/headLinks_js.jsp" %>        
+        <%@ include file="/partials/headLinks_js.jsp" %>
+        <%@ include file="/partials/restrict/headLinks_js.jsp" %>
         
         <script type="text/javascript" src="/js/lib/tiny/tiny_mce.js"></script>
         <script type="text/javascript" src="/js/lib/tiny/editor-custon.js"></script>
@@ -22,14 +23,7 @@
 
     <body>
 
-        <div id="head">
-            <div class="container_24 top-head">
-                <div class="logo aling-left">
-                    <a href="#">Frank Bezerra, desenvolvedor de interfaces Web, Brasilía - DF</a>
-                </div>     
-                <div class="clear"></div>
-            </div>
-        </div>
+        <%@ include file="/partials/head.jsp" %>
 
         <div id="faixa-top">
 
