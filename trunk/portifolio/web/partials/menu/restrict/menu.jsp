@@ -8,13 +8,13 @@
                     <li>
                         <span>Dados cadastrais</span>
                         <ul>
-                            <li><a href="/admin/painel/dados_pessoais.jsp">Dados Pessoais</a></li>
+                            <li><a href="/portifolio/nav=edit-dados-pessoais">Dados Pessoais</a></li>
                         </ul>
                     </li>
                     <li>
                         <span>Minha conta</span>
                         <ul>
-                            <li><a href="/admin/painel/senha.jsp">Alterar senha</a></li>
+                            <li><a href="/portifolio/nav=alterar-senha">Alterar senha</a></li>
                         </ul>
                     </li>
                 </ul>                

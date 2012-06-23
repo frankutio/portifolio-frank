@@ -31,11 +31,10 @@ public class FilterPainelControle implements Filter {
         try {
             if (httpRequest.getSession().getAttribute("pass-login") == null) {
                 httpRequest.setAttribute("MsgErro", "Login Necessario.");
-                httpRequest.getRequestDispatcher("/admin/index.jsp").forward(request, response);
+                httpRequest.getRequestDispatcher("/portifolio?nav=login").forward(request, response);
             }
             else {
                 chain.doFilter(request, response);
-                httpRequest.getSession().setAttribute("area", "restrict");
             }
         } catch (Exception ex) {
             ex.printStackTrace();
