@@ -18,6 +18,10 @@
         <servlet-name>ServletLogoof</servlet-name>
         <servlet-class>Controle.Portal.ServletLogoof</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletNavigation</servlet-name>
+        <servlet-class>Controle.Portal.ServletNavigation</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletPainelControle</servlet-name>
         <url-pattern>/usrPass</url-pattern>
@@ -25,6 +29,10 @@
     <servlet-mapping>
         <servlet-name>ServletLogoof</servlet-name>
         <url-pattern>/logoff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletNavigation</servlet-name>
+        <url-pattern>/portifolio</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

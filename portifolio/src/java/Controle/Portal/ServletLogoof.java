@@ -39,7 +39,7 @@ public class ServletLogoof extends HttpServlet {
             // Remove os dados de mensagem da sessao.
             request.getSession().removeAttribute("MsgErro");
 
-            proximaPagina = "/";
+            proximaPagina = "/portifolio?nav=portifolio";
 
         }
 

@@ -63,7 +63,7 @@ public class ServletPainelControle extends HttpServlet {
         }
         
         else if(operacao.equals("homePainel")){
-            proximaPagina = "/admin/painel/index.jsp";
+            proximaPagina = "/portifolio?nav=painel";
         }
         
         //PARA DIRECIONAR AS PAGINAS PARA O LOCAL CERTO.
