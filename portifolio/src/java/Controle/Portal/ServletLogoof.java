@@ -35,6 +35,7 @@ public class ServletLogoof extends HttpServlet {
             
             request.getSession().removeAttribute("pass-login");
             request.getSession().removeAttribute("Usuario");
+            request.getSession().removeAttribute("local");
 
             // Remove os dados de mensagem da sessao.
             request.getSession().removeAttribute("MsgErro");

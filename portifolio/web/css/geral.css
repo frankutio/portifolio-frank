@@ -26,6 +26,13 @@ resumo: Formata e diagrama as estruturas do layout.
     text-indent: -9999em;
 }
 
+#head .logo a{
+    display: block;
+    border: 0 none;
+    width: 271px;
+    height: 76px;
+}
+
 #faixa-top{
     clear: both;
     display: block;
