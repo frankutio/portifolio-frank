@@ -28,16 +28,14 @@ USE portifolio;
 DROP TABLE IF EXISTS `image`;
 CREATE TABLE `image` (
   `id_image` int(3) NOT NULL AUTO_INCREMENT,
-  `Lixeira_id_lixeira` int(3) DEFAULT NULL,
-  `Portifolio_id_portifolio` int(3) NOT NULL,
+  `Portifolio_id` int(3) NOT NULL,
   `alt` varchar(100) DEFAULT NULL,
   `title` varchar(100) DEFAULT NULL,
   `descricao` varchar(500) DEFAULT NULL,
   `ordem` int(2) DEFAULT NULL,
   `lixo` enum('true','false') DEFAULT NULL,
   PRIMARY KEY (`id_image`),
-  KEY `Image_FKIndex1` (`Portifolio_id_portifolio`),
-  KEY `Image_FKIndex2` (`Lixeira_id_lixeira`)
+  KEY `Image_FKIndex1` (`Portifolio_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -49,23 +47,24 @@ CREATE TABLE `image` (
 
 
 --
--- Definition of table `lixeira`
+-- Definition of table `log_sistem`
 --
 
-DROP TABLE IF EXISTS `lixeira`;
-CREATE TABLE `lixeira` (
-  `id_lixeira` int(3) NOT NULL AUTO_INCREMENT,
-  `data_exclusao` date NOT NULL,
-  `flag_lixo` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`id_lixeira`)
+DROP TABLE IF EXISTS `log_sistem`;
+CREATE TABLE `log_sistem` (
+  `id_log` int(3) NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(20) DEFAULT NULL,
+  `data_log` date DEFAULT NULL,
+  `item` int(3) DEFAULT NULL,
+  PRIMARY KEY (`id_log`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `lixeira`
+-- Dumping data for table `log_sistem`
 --
 
-/*!40000 ALTER TABLE `lixeira` DISABLE KEYS */;
-/*!40000 ALTER TABLE `lixeira` ENABLE KEYS */;
+/*!40000 ALTER TABLE `log_sistem` DISABLE KEYS */;
+/*!40000 ALTER TABLE `log_sistem` ENABLE KEYS */;
 
 
 --
@@ -75,8 +74,7 @@ CREATE TABLE `lixeira` (
 DROP TABLE IF EXISTS `portifolio`;
 CREATE TABLE `portifolio` (
   `id_portifolio` int(3) NOT NULL AUTO_INCREMENT,
-  `Lixeira_id_lixeira` int(3) DEFAULT NULL,
-  `Usuario_id_user` int(3) NOT NULL,
+  `Usuario_id` int(3) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `servico` varchar(100) NOT NULL,
   `tecnologia` varchar(1000) DEFAULT NULL,
@@ -88,8 +86,7 @@ CREATE TABLE `portifolio` (
   `id_img_capa` varchar(20) NOT NULL,
   `lixo` enum('true','false') DEFAULT NULL,
   PRIMARY KEY (`id_portifolio`),
-  KEY `Portifilio_FKIndex1` (`Usuario_id_user`),
-  KEY `Portifolio_FKIndex2` (`Lixeira_id_lixeira`)
+  KEY `Portifilio_FKIndex1` (`Usuario_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -129,7 +126,6 @@ INSERT INTO `tipo` (`id`,`tipo_user`) VALUES
 DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE `usuario` (
   `id_user` int(3) NOT NULL AUTO_INCREMENT,
-  `Lixeira_id_lixeira` int(3) DEFAULT NULL,
   `Tipo_id` int(3) NOT NULL,
   `login` varchar(20) DEFAULT NULL,
   `nome` varchar(100) DEFAULT NULL,
@@ -140,8 +136,7 @@ CREATE TABLE `usuario` (
   `data_nascimento` date DEFAULT NULL,
   `lixo` enum('true','false') DEFAULT NULL,
   PRIMARY KEY (`id_user`),
-  KEY `Usuario_FKIndex1` (`Tipo_id`),
-  KEY `Usuario_FKIndex2` (`Lixeira_id_lixeira`)
+  KEY `Usuario_FKIndex1` (`Tipo_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
@@ -149,8 +144,8 @@ CREATE TABLE `usuario` (
 --
 
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` (`id_user`,`Lixeira_id_lixeira`,`Tipo_id`,`login`,`nome`,`senha`,`email`,`foto`,`about`,`data_nascimento`,`lixo`) VALUES 
- (1,NULL,1,'frankutio','Frank Bezerra Simião','fb007032','frankutio@gmail.com',NULL,NULL,'1984-01-30','false');
+INSERT INTO `usuario` (`id_user`,`Tipo_id`,`login`,`nome`,`senha`,`email`,`foto`,`about`,`data_nascimento`,`lixo`) VALUES 
+ (1,1,'frankutio','Frank Bezerra Simião','fb007032','frankutio@gmail.com',NULL,NULL,'1984-01-30','false');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 
 

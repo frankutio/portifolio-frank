@@ -1,6 +1,5 @@
 CREATE TABLE Image (
   id_image INT(3) NOT NULL AUTO_INCREMENT,
-  Lixeira_id_lixeira INT(3) NULL,
   Portifolio_id_portifolio INT(3) NOT NULL,
   alt VARCHAR(100) NULL,
   title VARCHAR(100) NULL,
@@ -8,22 +7,21 @@ CREATE TABLE Image (
   ordem INT(2) NULL,
   lixo ENUM('true','false') NULL,
   PRIMARY KEY(id_image),
-  INDEX Image_FKIndex1(Portifolio_id_portifolio),
-  INDEX Image_FKIndex2(Lixeira_id_lixeira)
+  INDEX Image_FKIndex1(Portifolio_id_portifolio)
 )
 TYPE=InnoDB;
 
-CREATE TABLE Lixeira (
-  id_lixeira INT(3) NOT NULL AUTO_INCREMENT,
-  data_exclusao DATE NOT NULL,
-  flag_lixo BOOL NULL,
-  PRIMARY KEY(id_lixeira)
+CREATE TABLE Log_sistem (
+  id_log INT(3) NOT NULL AUTO_INCREMENT,
+  tipo VARCHAR(20) NULL,
+  data_log DATE NULL,
+  item INT(3) NULL,
+  PRIMARY KEY(id_log)
 )
 TYPE=InnoDB;
 
 CREATE TABLE Portifolio (
   id_portifolio INT(3) NOT NULL AUTO_INCREMENT,
-  Lixeira_id_lixeira INT(3) NULL,
   Usuario_id_user INT(3) NOT NULL,
   nome VARCHAR(100) NOT NULL,
   servico VARCHAR(100) NOT NULL,
@@ -36,8 +34,7 @@ CREATE TABLE Portifolio (
   id_img_capa VARCHAR(20) NOT NULL,
   lixo ENUM('true','false') NULL,
   PRIMARY KEY(id_portifolio),
-  INDEX Portifilio_FKIndex1(Usuario_id_user),
-  INDEX Portifolio_FKIndex2(Lixeira_id_lixeira)
+  INDEX Portifilio_FKIndex1(Usuario_id_user)
 )
 TYPE=InnoDB;
 
@@ -50,7 +47,6 @@ TYPE=InnoDB;
 
 CREATE TABLE Usuario (
   id_user INT(3) NOT NULL AUTO_INCREMENT,
-  Lixeira_id_lixeira INT(3) NULL,
   Tipo_id INT(3) NOT NULL,
   login VARCHAR(20) NULL,
   nome VARCHAR(100) NULL,
@@ -61,8 +57,7 @@ CREATE TABLE Usuario (
   data_nascimento DATE NULL,
   lixo ENUM('true','false') NULL,
   PRIMARY KEY(id_user),
-  INDEX Usuario_FKIndex1(Tipo_id),
-  INDEX Usuario_FKIndex2(Lixeira_id_lixeira)
+  INDEX Usuario_FKIndex1(Tipo_id)
 )
 TYPE=InnoDB;
 
