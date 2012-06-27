@@ -8,7 +8,7 @@
                     <li>
                         <span>Dados cadastrais</span>
                         <ul>
-                            <li><a href="/portifolio/nav=edit-dados-pessoais">Dados Pessoais</a></li>
+                            <li><a href="/portifolio?nav=editDadosPessoais">Dados Pessoais</a></li>
                         </ul>
                     </li>
                     <li>
@@ -36,7 +36,7 @@
             <li class="menu-head">
                 <span class="menu-head-item drop">Usuários</span>
                 <ul>
-                    <li><a href="/portifolio?nav=cmsUser&action=adcionar_usuario">Adicionar Usuário</a></li>
+                    <li><a href="/portifolio?nav=cmsUser&action=adicionar_usuario">Adicionar Usuário</a></li>
                     <li><a href="/portifolio?nav=cmsUser&action=adm_usuario">Administrar Usuários</a></li>
                 </ul>
             </li>

@@ -15,6 +15,7 @@ public class Portifolio {
     private String link;
     private String img_capa;
     private String id_img_capa;
+    private String lixo;
 
     /**
      * @return the id_portifolio
@@ -168,6 +169,20 @@ public class Portifolio {
      */
     public void setId_img_capa(String id_img_capa) {
         this.id_img_capa = id_img_capa;
+    }
+
+    /**
+     * @return the lixo
+     */
+    public String getLixo() {
+        return lixo;
+    }
+
+    /**
+     * @param lixo the lixo to set
+     */
+    public void setLixo(String lixo) {
+        this.lixo = lixo;
     }
     
 }

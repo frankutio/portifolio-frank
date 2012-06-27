@@ -1,12 +1,14 @@
-
 package Entidade.Portal;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
 public class Usuario {
     
+    public static final int INCLUSAO = 1;
+    public static final int ALTERACAO = 2;
+    public static final int VERIFICACAO = 3;
+
     private int id_user;
     private int tipo_id;
     private String login;
@@ -16,6 +18,38 @@ public class Usuario {
     private String foto;
     private String about;
     private Date data_nascimento;
+    private String lixo;
+
+    public String validaDados(int tipoDeValidacao) {
+
+        String msgErro = "";
+
+        if (tipoDeValidacao == INCLUSAO) {
+            
+            if (getLogin() == null || getLogin().equals("")) {
+                msgErro += "Informe o login.<br />";
+            }
+            
+            if (getNome() == null || getNome().equals("")) {
+                msgErro += "Informe o nome.<br />";
+            }
+            
+            if (getSenha() == null || getSenha().equals("")) {
+                msgErro += "Informe a senha.<br />";
+            }
+            
+            if (getEmail() == null || getEmail().equals("")) {
+                msgErro += "Informe o e-mail.<br />";
+            }
+            
+            if (getData_nascimento() == null) {
+                msgErro += "Informe a data de nascimento.<br />";
+            }
+
+        }
+
+        return msgErro;
+    }
 
     /**
      * @return the id_user
@@ -77,9 +111,9 @@ public class Usuario {
      * @return the data_nascimento
      */
     public Date getData_nascimento() {
-        return   data_nascimento;
+        return data_nascimento;
     }
-    
+
     public String getData_nascimentoString() {
         return (new SimpleDateFormat("dd/MM/yyyy")).format(data_nascimento);
     }
@@ -146,5 +180,18 @@ public class Usuario {
     public void setData_nascimento(Date data_nascimento) {
         this.data_nascimento = data_nascimento;
     }
-    
+
+    /**
+     * @return the lixo
+     */
+    public String getLixo() {
+        return lixo;
+    }
+
+    /**
+     * @param lixo the lixo to set
+     */
+    public void setLixo(String lixo) {
+        this.lixo = lixo;
+    }
 }

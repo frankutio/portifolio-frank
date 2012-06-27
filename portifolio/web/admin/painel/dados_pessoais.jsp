@@ -8,10 +8,10 @@
 
         <%@ include file="/partials/headLinks_css.jsp" %>
         <%@ include file="/partials/restrict/headLinks_css.jsp" %>
-        
+
         <%@ include file="/partials/headLinks_js.jsp" %>
         <%@ include file="/partials/restrict/headLinks_js.jsp" %>
-        
+
         <script type="text/javascript" src="/js/lib/tiny/tiny_mce.js"></script>
         <script type="text/javascript" src="/js/lib/tiny/editor-custon.js"></script>
 
@@ -49,20 +49,32 @@
                     <div class="box-content">
                         <form name="profile" action="#" method="post" id="form-dados-pessoais">
                             <dl>
+                                <dt><label for="tipo">Tipo</label></dt>
+                                <dd>
+                                    <select id="tipo" name="tipo" disabled="disabled">
+                                        <option value="0"></option>
+                                        <c:forEach items="${lstTipo}" var="lstTipo">
+                                        <option value="${lstTipo.id}"
+                                            <c:if  test="${Usuario.tipo_id == lstTipo.id}">
+                                                selected ="${lstTipo.tipo_user}"
+                                            </c:if>   > ${lstTipo.tipo_user}</option>
+                                        </c:forEach>
+                                    </select>
+                                </dd>
                                 <dt><label for="nome">Nome</label></dt>
-                                <dd><input type="text" name="name" id="nome" /></dd>
+                                <dd><input type="text" name="name" id="nome" value="${Usuario.nome}" /></dd>
                                 <dt><label for="login">Login</label></dt>
-                                <dd><input type="text" name="login" id="login" disabled="disabled" /></dd>
+                                <dd><input type="text" name="login" id="login" disabled="disabled" value="${Usuario.login}" /></dd>
                                 <dt><label for="email">E-mail</label></dt>
-                                <dd><input type="text" name="email" id="email" /></dd>
+                                <dd><input type="text" name="email" id="email" value="${Usuario.email}" /></dd>
                                 <dt><label for="dat_nascimento">Data de Nascimento</label></dt>
-                                <dd><input type="text" name="dat_nascimento" class="date" id="dat_nascimento" /></dd>                        
+                                <dd><input type="text" name="dat_nascimento" class="date" id="dat_nascimento" value="${Usuario.getData_nascimentoString()}" /></dd>                        
                                 <dt>
                                     <div class="info-form">Escreva abaixo, um breve resumo sobre você como profissional, este resumo aparecerá em seu portifólio</div>
                                 </dt>
                                 <dt><label for="about">Sobre mim</label></dt>
                                 <dd>
-                                    <textarea name="about" id="about" class="rich-text-medium"></textarea>
+                                    <textarea name="about" id="about" class="rich-text-medium">${Usuario.about}</textarea>
                                     <span class="count">397</span>
                                 </dd>
                                 <dt></dt>
