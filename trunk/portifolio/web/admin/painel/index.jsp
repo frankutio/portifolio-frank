@@ -41,6 +41,10 @@
             <%@ include file="/partials/menu/restrict/menu.jsp" %>
 
             <div class="content">
+                
+                <c:if test="${msg != null || msg != ''}">
+                    <div>${msg}</div>
+                </c:if>
 
                 <div class="grid_4 inside-collumns">
                     <!-- Foto -->

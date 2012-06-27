@@ -63,11 +63,13 @@ public class ServletNavigation extends HttpServlet {
 
         }
         
-        else if (nav.equals("edit-dados-pessoais")) {
+        else if (nav.equals("editDadosPessoais")) {
             
             request.getSession().setAttribute("local", "restrict");
+            
+            String action = "/admin/painel/dados_pessoais.jsp";
 
-            proximaPagina = "/admin/painel/dados_pessoais.jsp";
+            proximaPagina = "/usrPass?operacao=editDadosPessoais&action="+action;
 
         }
         

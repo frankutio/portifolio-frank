@@ -1,14 +1,14 @@
-
 package Entidade.Portal;
 
 public class Image {
-    
+
     private int id_image;
     private int id_portifolio;
     private String alt;
     private String title;
     private String descricao;
     private int ordem;
+    private String lixo;
 
     /**
      * @return the id_image
@@ -93,5 +93,18 @@ public class Image {
     public void setOrdem(int ordem) {
         this.ordem = ordem;
     }
-    
+
+    /**
+     * @return the lixo
+     */
+    public String getLixo() {
+        return lixo;
+    }
+
+    /**
+     * @param lixo the lixo to set
+     */
+    public void setLixo(String lixo) {
+        this.lixo = lixo;
+    }
 }
