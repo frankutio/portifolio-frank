@@ -122,7 +122,9 @@ public class ServletNavigation extends HttpServlet {
             }
 
             else if(action.equals("adm_usuario")){
-                proximaPagina = "/admin/painel/user/adm_usuario.jsp";
+                
+                String redirect = "/admin/painel/user/adm_usuario.jsp";
+                proximaPagina = "usrPass?operacao=adm_usuario&action="+redirect+"&user="+request.getParameter("user");
             }
 
             request.getSession().setAttribute("local", "restrict");

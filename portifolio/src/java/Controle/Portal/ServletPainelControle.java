@@ -177,6 +177,26 @@ public class ServletPainelControle extends HttpServlet {
 
         } 
         
+        else if (operacao.equals("editCadUser")) {
+            
+
+            proximaPagina = "/";
+        }
+        
+        else if (operacao.equals("adm_usuario")) {
+            
+            int id = Integer.parseInt(request.getParameter("user"));
+            
+            List<Tipo> lstTipo = UsrDAO.getInstance().leTipo();
+            
+            List<Usuario> listUsr = UsrDAO.getInstance().leTodos(id);
+            
+            request.setAttribute("listUsr", listUsr);
+            request.setAttribute("lstTipo", lstTipo);
+
+            proximaPagina = action;
+        } 
+        
         else if (operacao.equals("editDadosPessoais")) {
 
 

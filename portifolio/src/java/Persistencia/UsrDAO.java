@@ -60,6 +60,52 @@ public class UsrDAO {
 
     }
 
+    //RECUPERA UMA  LISTA DE TODOS OS Usuarios DO BANCO
+    public List<Usuario> leTodos(int id) {
+
+        Statement stmt = null;
+        List<Usuario> lstUsers = new ArrayList<Usuario>();
+        Connection conn = Conexao.getInstance().criaConexao();
+
+        if (conn != null) {
+            try {
+                stmt = conn.createStatement(
+                        ResultSet.TYPE_SCROLL_SENSITIVE,
+                        ResultSet.CONCUR_READ_ONLY);
+                ResultSet rs = stmt.executeQuery(
+                        "SELECT * FROM usuario where id_user <> "+ id);
+                while (rs.next()) {
+                    Usuario usr = new Usuario();
+                    
+                    usr.setId_user(rs.getInt("id_user"));
+                    usr.setTipo_id(rs.getInt("Tipo_id"));
+                    usr.setLogin(rs.getString("login"));
+                    usr.setNome(rs.getString("nome"));
+                    usr.setEmail(rs.getString("email"));
+                    usr.setData_nascimento(rs.getDate("data_nascimento"));
+                    usr.setLixo(rs.getString("lixo"));
+                    
+                    lstUsers.add(usr);
+                }
+                conn.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            } finally {
+                try {
+                    if (stmt != null) {
+                        stmt.close();
+                    }
+                    if (conn != null) {
+                        conn.close();
+                    }
+                } catch (SQLException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+        return lstUsers;
+    }
+    
     //RECUPERA UMA  LISTA DE TODOS OS REGISTRO DO BANCO
     public List<Tipo> leTipo() {
 

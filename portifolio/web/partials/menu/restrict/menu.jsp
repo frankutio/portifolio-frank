@@ -37,7 +37,7 @@
                 <span class="menu-head-item drop">Usuários</span>
                 <ul>
                     <li><a href="/portifolio?nav=cmsUser&action=adicionar_usuario">Adicionar Usuário</a></li>
-                    <li><a href="/portifolio?nav=cmsUser&action=adm_usuario">Administrar Usuários</a></li>
+                    <li><a href="/portifolio?nav=cmsUser&action=adm_usuario&user=${Usuario.id_user}">Administrar Usuários</a></li>
                 </ul>
             </li>
         </ul>
