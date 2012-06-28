@@ -29,7 +29,7 @@ public class FilterPainelControle implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
 
         try {
-            if (httpRequest.getSession().getAttribute("pass-login") == null) {
+            if (httpRequest.getSession().getAttribute("pass-login") == null || httpRequest.getSession().getAttribute("Usuario") == null) {
                 httpRequest.setAttribute("MsgErro", "Login Necessario.");
                 httpRequest.getRequestDispatcher("/portifolio?nav=login").forward(request, response);
             }

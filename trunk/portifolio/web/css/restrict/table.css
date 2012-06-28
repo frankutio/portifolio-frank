@@ -71,3 +71,12 @@ td.msg-table h5, div.msg-table h5 {
 table.crud tr.zebra td {
     background: #F9F9F9;
 }
+
+table.crud .list-button{
+    width: 200px;
+    text-align: center;
+}
+
+table.crud td.list-button.small a {
+    margin-right: 12px;
+}
