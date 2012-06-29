@@ -72,6 +72,15 @@ a span.img{
     background-position: 0 -36px;
 }
 
+.bt-img.bloq span{
+    background-position: 0 -614px;
+}
+
+.bt-img.restal span{
+    background-position: 0 -691px;
+    width: 22px;
+}
+
 .bt-img:hover span{
     background-position: 0 -161px;
 }
@@ -98,4 +107,12 @@ a span.img{
 
 .bt-img.del:hover span{
     background-position: 0 -201px;
+}
+
+.bt-img.bloq:hover span{
+    background-position: 0 -655px;
+}
+
+.bt-img.restal:hover span{
+    background-position: 0 -725px;
 }
