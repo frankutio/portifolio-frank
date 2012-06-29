@@ -225,6 +225,45 @@ public class UsrDAO {
     }
     
     
+    // Carrega dados de um usário para manipulação
+    public Usuario carregaDados(int id) {
+
+        Statement stmt = null;
+        Usuario usuario = null;
+        Connection conn = Conexao.getInstance().criaConexao();
+        if (conn != null) {
+            try {
+                stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(
+                        "SELECT * FROM Usuario WHERE id_user =" +
+                        id+" and lixo = 'false'");
+                if (rs.next()) {
+                    usuario = carregaDadosNoObjeto(rs);
+                } else {
+                    usuario = null;
+                }
+                conn.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            } finally {
+                try {
+                    if (stmt != null) {
+                        stmt.close();
+                    }
+                    if (conn != null) {
+                        conn.close();
+                    }
+                } catch (SQLException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+
+        }
+        return usuario;
+
+    }
+    
+    
     // Popula dados na classe com o resultado do select   
     
     private Usuario carregaDadosNoObjeto(ResultSet rs) throws SQLException {

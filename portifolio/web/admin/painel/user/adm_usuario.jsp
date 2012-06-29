@@ -70,6 +70,11 @@
                                             <h5>Nome</h5>
                                         </div>
                                     </th>
+                                    <th class="center date">
+                                        <div>
+                                            <h5>Status</h5>
+                                        </div>
+                                    </th>
                                     <th class="center login">
                                         <div>
                                             <h5>Ação</h5>
@@ -77,38 +82,53 @@
                                     </th>
                                 </tr>
                                 <c:if test="${listUsr == null || listUsr == ''}">
-                                <tr>
-                                    <td colspan="4" class="msg-table empty">
-                                        <div class="center">
-                                            <h5 class="font-normal">Não existem usuários cadastrados</h5>
-                                        </div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td colspan="4" class="msg-table empty">
+                                            <div class="center">
+                                                <h5 class="font-normal">Não existem usuários cadastrados</h5>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 </c:if>
                                 <c:if test="${listUsr != null || listUsr != ''}">
                                     <c:forEach items="${listUsr}" var="usr">
                                         <tr>
-                                            <td>
+                                            <td class="center">
                                                 <c:forEach items="${lstTipo}" var="tipo">
-                                                  <c:if test="${tipo.id == usr.tipo_id}">
-                                                       ${tipo.tipo_user}
-                                                  </c:if>
+                                                    <c:if test="${tipo.id == usr.tipo_id}">
+                                                        ${tipo.tipo_user}
+                                                    </c:if>
                                                 </c:forEach>
                                             </td>
-                                            <td>${usr.login}</td>
+                                            <td class="center">${usr.login}</td>
                                             <td>${usr.nome}</td>
-                                            <td class="list-button small">
-                                                <a href="/usrPass?operacao=editCadUser&codigo=${usr.id_user}" class="alterar button-gray bt-img edit" title="Editar">
-                                                    <span></span>
-                                                </a>
-                                                <a href="/usrPass?operacao=delCadUser&codigo=${usr.id_user}" class="excluir button-gray bt-img del" title="Excluir">
-                                                    <span></span>
-                                                </a>
+                                            <td class="center">
+                                                <c:if test="${usr.lixo == 'false'}">
+                                                    <span class="active">Ativo</span>
+                                                </c:if> 
+                                                <c:if test="${usr.lixo == 'true'}">
+                                                    <span class="inactive">bloqueado</span>
+                                                </c:if> 
+                                            </td>
+                                            <td class="list-button small">                                                
+                                                <c:if test="${usr.lixo == 'true'}">
+                                                    <a href="/usrPass?operacao=restalCadUser&codigo=${usr.id_user}" class="Recuperar button-gray bt-img restal" title="Recuperar">
+                                                        <span></span>
+                                                    </a>
+                                                </c:if>
+                                                <c:if test="${usr.lixo == 'false'}">
+                                                    <a href="/usrPass?operacao=editCadUser&codigo=${usr.id_user}" class="alterar button-gray bt-img edit" title="Editar">
+                                                        <span></span>
+                                                    </a>
+                                                    <a href="/usrPass?operacao=bloqCadUser&codigo=${usr.id_user}" class="bloquear button-gray bt-img bloq" title="Bloquear">
+                                                        <span></span>
+                                                    </a>
+                                                </c:if>                                                
                                             </td>
                                         </tr>                                      
                                     </c:forEach>
                                 </c:if>
-                                
+
                             </tbody>
                         </table>
                     </div>
