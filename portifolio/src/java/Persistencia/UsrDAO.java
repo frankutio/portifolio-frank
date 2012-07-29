@@ -29,7 +29,7 @@ public class UsrDAO {
             try {
                 pstmt = conn.prepareStatement(
                         "INSERT INTO Usuario " +
-                        "(tipo_id,login,nome,senha,email,data_nascimento,lixo)" +                        
+                        "(tipo_id,login,nome,senha,email,data_nascimento,bloq)" +
                         " VALUES (?, ?, ?, ?, ?, ?, ?)");
                 pstmt.setInt(1, usr.getId_user());
                 pstmt.setString(2, usr.getLogin());
@@ -37,7 +37,7 @@ public class UsrDAO {
                 pstmt.setString(4, usr.getSenha());
                 pstmt.setString(5, usr.getEmail());
                 pstmt.setDate(6, new java.sql.Date(usr.getData_nascimento().getTime()));
-                pstmt.setString(7, usr.getLixo());
+                pstmt.setString(7, usr.getBloq());
 
                 n = pstmt.executeUpdate();
             } catch (SQLException e) {
@@ -83,7 +83,7 @@ public class UsrDAO {
                     usr.setNome(rs.getString("nome"));
                     usr.setEmail(rs.getString("email"));
                     usr.setData_nascimento(rs.getDate("data_nascimento"));
-                    usr.setLixo(rs.getString("lixo"));
+                    usr.setBloq(rs.getString("bloq"));
                     
                     lstUsers.add(usr);
                 }
@@ -279,7 +279,7 @@ public class UsrDAO {
         usuario.setFoto(rs.getString("foto"));
         usuario.setAbout(rs.getString("about"));
         usuario.setData_nascimento(rs.getDate("data_nascimento"));
-        usuario.setLixo(rs.getString("lixo"));
+        usuario.setBloq(rs.getString("bloq"));
 
         return usuario;
 

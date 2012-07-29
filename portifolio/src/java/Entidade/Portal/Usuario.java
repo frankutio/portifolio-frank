@@ -18,7 +18,7 @@ public class Usuario {
     private String foto;
     private String about;
     private Date data_nascimento;
-    private String lixo;
+    private String bloq;
 
     public String validaDados(int tipoDeValidacao) {
 
@@ -182,16 +182,16 @@ public class Usuario {
     }
 
     /**
-     * @return the lixo
+     * @return the bloq
      */
-    public String getLixo() {
-        return lixo;
+    public String getBloq() {
+        return bloq;
     }
 
     /**
-     * @param lixo the lixo to set
+     * @param bloq the bloq to set
      */
-    public void setLixo(String lixo) {
-        this.lixo = lixo;
+    public void setBloq(String bloq) {
+        this.bloq = bloq;
     }
 }
