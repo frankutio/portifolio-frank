@@ -4,11 +4,11 @@ public class Image {
 
     private int id_image;
     private int id_portifolio;
+    private String titulo;
     private String alt;
     private String title;
     private String descricao;
     private int ordem;
-    private String lixo;
 
     /**
      * @return the id_image
@@ -95,16 +95,16 @@ public class Image {
     }
 
     /**
-     * @return the lixo
+     * @return the titulo
      */
-    public String getLixo() {
-        return lixo;
+    public String getTitulo() {
+        return titulo;
     }
 
     /**
-     * @param lixo the lixo to set
+     * @param titulo the titulo to set
      */
-    public void setLixo(String lixo) {
-        this.lixo = lixo;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 }

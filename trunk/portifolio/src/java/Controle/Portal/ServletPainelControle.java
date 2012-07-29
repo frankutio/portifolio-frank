@@ -149,7 +149,7 @@ public class ServletPainelControle extends HttpServlet {
                         usr.setLogin(formUsr.getLogin());
                         usr.setSenha(formUsr.getSenha());
                         usr.setData_nascimento(formUsr.getData_nascimento());
-                        usr.setLixo("false");
+                        usr.setBloq("false");
 
                         //EFETUA A GRAVACAO DOS DADOS
                         UsrDAO.getInstance().grava(usr);

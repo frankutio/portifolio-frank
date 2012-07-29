@@ -9,7 +9,8 @@ public class Log {
     private int cod;
     private String tipo;
     private Date data;
-    private int item;
+    private String acao;
+    private int id_user;
 
     /**
      * @return the cod
@@ -37,10 +38,10 @@ public class Log {
     }
 
     /**
-     * @return the item
+     * @return the acao
      */
-    public int getItem() {
-        return item;
+    public String getAcao() {
+        return acao;
     }
 
     /**
@@ -67,7 +68,21 @@ public class Log {
     /**
      * @param item the item to set
      */
-    public void setItem(int item) {
-        this.item = item;
+    public void setAcao(String acao) {
+        this.acao = acao;
+    }
+
+    /**
+     * @return the id_user
+     */
+    public int getId_user() {
+        return id_user;
+    }
+
+    /**
+     * @param id_user the id_user to set
+     */
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
     }
 }
