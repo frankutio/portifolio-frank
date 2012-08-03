@@ -116,15 +116,19 @@ public class ServletNavigation extends HttpServlet {
         else if (nav.equals("cmsUser")) {
 
             String action = request.getParameter("action");
+            String user = request.getParameter("user");
 
-            if(action.equals("adicionar_usuario")){
-                proximaPagina = "/admin/painel/user/adicionar_usuario.jsp";
+            if(action.equals("adicionar_usuario")){               
+                
+                String redirect = "/admin/painel/user/adicionar_usuario.jsp";                
+                
+                proximaPagina = "usrPass?operacao=add_user&action="+redirect+"&user="+user;
             }
 
             else if(action.equals("adm_usuario")){
                 
                 String redirect = "/admin/painel/user/adm_usuario.jsp";
-                proximaPagina = "usrPass?operacao=adm_usuario&action="+redirect+"&user="+request.getParameter("user");
+                proximaPagina = "usrPass?operacao=adm_usuario&action="+redirect+"&user="+user;
             }
 
             request.getSession().setAttribute("local", "restrict");

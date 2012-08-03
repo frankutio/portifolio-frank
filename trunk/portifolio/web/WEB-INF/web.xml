@@ -8,6 +8,10 @@
         <filter-name>FilterHome</filter-name>
         <filter-class>Controle.Portal.FilterHome</filter-class>
     </filter>
+    <filter>
+        <filter-name>FilterPainelUser</filter-name>
+        <filter-class>Controle.Portal.FilterPainelUser</filter-class>
+    </filter>
     <filter-mapping>
         <filter-name>FilterHome</filter-name>
         <url-pattern>/*</url-pattern>
@@ -15,6 +19,12 @@
     <filter-mapping>
         <filter-name>FilterPainelControle</filter-name>
         <url-pattern>/admin/painel/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>FilterPainelUser</filter-name>
+        <url-pattern>/admin/painel/user/adicionar_usuario.jsp</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>

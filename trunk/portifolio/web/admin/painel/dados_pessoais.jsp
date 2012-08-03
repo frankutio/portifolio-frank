@@ -1,11 +1,19 @@
 <%@page contentType="text/html" pageEncoding="ISO-8859-1" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<c:if test="${local == 'open'}">
+    <jsp:forward page="/portifolio?nav=painel"></jsp:forward>
+</c:if>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
     <head>
-
+        
+        <%@ include file="/partials/headLinks.jsp" %>
+        
+        <title>Painel Administrativo</title>
+        
         <%@ include file="/partials/headLinks_css.jsp" %>
         <%@ include file="/partials/restrict/headLinks_css.jsp" %>
 
@@ -13,11 +21,7 @@
         <%@ include file="/partials/restrict/headLinks_js.jsp" %>
 
         <script type="text/javascript" src="/js/lib/tiny/tiny_mce.js"></script>
-        <script type="text/javascript" src="/js/lib/tiny/editor-custon.js"></script>
-
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />        
-
-        <title>Painel Administrativo</title>
+        <script type="text/javascript" src="/js/lib/tiny/editor-custon.js"></script>        
 
     </head>
 

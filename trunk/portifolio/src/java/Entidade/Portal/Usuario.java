@@ -41,10 +41,6 @@ public class Usuario {
             if (getEmail() == null || getEmail().equals("")) {
                 msgErro += "Informe o e-mail.<br />";
             }
-            
-            if (getData_nascimento() == null) {
-                msgErro += "Informe a data de nascimento.<br />";
-            }
 
         }
 
@@ -115,7 +111,12 @@ public class Usuario {
     }
 
     public String getData_nascimentoString() {
-        return (new SimpleDateFormat("dd/MM/yyyy")).format(data_nascimento);
+        if(data_nascimento == null){
+            return null;
+        }
+        else{
+            return (new SimpleDateFormat("dd/MM/yyyy")).format(data_nascimento);
+        }        
     }
 
     /**

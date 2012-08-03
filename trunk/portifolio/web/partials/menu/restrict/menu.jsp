@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="menu-cms">
     <div class="menu-tabs">
         <ul class="navigation">
@@ -36,7 +37,9 @@
             <li class="menu-head">
                 <span class="menu-head-item drop">Usuários</span>
                 <ul>
-                    <li><a href="/portifolio?nav=cmsUser&action=adicionar_usuario">Adicionar Usuário</a></li>
+                    <c:if test="${Usuario.tipo_id == 1}">
+                    <li><a href="/portifolio?nav=cmsUser&action=adicionar_usuario&user=${Usuario.id_user}">Adicionar Usuário</a></li>
+                    </c:if>                    
                     <li><a href="/portifolio?nav=cmsUser&action=adm_usuario&user=${Usuario.id_user}">Administrar Usuários</a></li>
                 </ul>
             </li>

@@ -9,16 +9,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
     <head>
-
+        
+        <%@ include file="/partials/headLinks.jsp" %>
+        
+        <title>Painel Administrativo</title>
+        
         <%@ include file="/partials/headLinks_css.jsp" %>
         <%@ include file="/partials/restrict/headLinks_css.jsp" %>
 
         <%@ include file="/partials/headLinks_js.jsp" %>
-        <%@ include file="/partials/restrict/headLinks_js.jsp" %>
-
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-        <title>Painel Administrativo</title>
+        <%@ include file="/partials/restrict/headLinks_js.jsp" %>        
 
     </head>
 
@@ -42,7 +42,7 @@
 
             <div class="content">
 
-                <c:if test="${msg != null || msg != ''}">
+                <c:if test="${msg != null || msg != '' || !empty msg}">
                     <div>${msg}</div>
                 </c:if>
 
@@ -92,7 +92,8 @@
                                 </c:if>
                                 <c:if test="${listUsr != null || listUsr != ''}">
                                     <c:forEach items="${listUsr}" var="usr">
-                                        <tr>
+                                        
+                                        <tr <c:if test="${usr.bloq == 'true'}">class="bloq"</c:if>>
                                             <td class="center">
                                                 <c:forEach items="${lstTipo}" var="tipo">
                                                     <c:if test="${tipo.id == usr.tipo_id}">
@@ -103,27 +104,32 @@
                                             <td class="center">${usr.login}</td>
                                             <td>${usr.nome}</td>
                                             <td class="center">
-                                                <c:if test="${usr.lixo == 'false'}">
+                                                <c:if test="${usr.bloq == 'false'}">
                                                     <span class="active">Ativo</span>
                                                 </c:if> 
-                                                <c:if test="${usr.lixo == 'true'}">
+                                                <c:if test="${usr.bloq == 'true'}">
                                                     <span class="inactive">bloqueado</span>
                                                 </c:if> 
                                             </td>
                                             <td class="list-button small">                                                
-                                                <c:if test="${usr.lixo == 'true'}">
-                                                    <a href="/usrPass?operacao=restalCadUser&codigo=${usr.id_user}" class="Recuperar button-gray bt-img restal" title="Recuperar">
-                                                        <span></span>
-                                                    </a>
+                                                <c:if test="${Usuario.tipo_id == 1}">
+                                                    <c:if test="${usr.bloq == 'true'}">
+                                                        <a href="/usrPass?operacao=restalCadUser&codigo=${usr.id_user}" class="Recuperar button-gray bt-img restal" title="Recuperar">
+                                                            <span></span>
+                                                        </a>
+                                                    </c:if>
+                                                    <c:if test="${usr.bloq == 'false'}">
+                                                        <a href="/usrPass?operacao=editCadUser&codigo=${usr.id_user}&user=${Usuario.id_user}" class="alterar button-gray bt-img edit" title="Editar">
+                                                            <span></span>
+                                                        </a>
+                                                        <a href="/usrPass?operacao=bloqCadUser&codigo=${usr.id_user}" class="bloquear button-gray bt-img bloq" title="Bloquear">
+                                                            <span></span>
+                                                        </a>
+                                                    </c:if> 
                                                 </c:if>
-                                                <c:if test="${usr.lixo == 'false'}">
-                                                    <a href="/usrPass?operacao=editCadUser&codigo=${usr.id_user}" class="alterar button-gray bt-img edit" title="Editar">
-                                                        <span></span>
-                                                    </a>
-                                                    <a href="/usrPass?operacao=bloqCadUser&codigo=${usr.id_user}" class="bloquear button-gray bt-img bloq" title="Bloquear">
-                                                        <span></span>
-                                                    </a>
-                                                </c:if>                                                
+                                                <c:if test="${Usuario.tipo_id != 1}">
+                                                    ...
+                                                </c:if>
                                             </td>
                                         </tr>                                      
                                     </c:forEach>
