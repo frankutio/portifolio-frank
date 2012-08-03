@@ -31,12 +31,17 @@ public class UsrDAO {
                         "INSERT INTO Usuario " +
                         "(tipo_id,login,nome,senha,email,data_nascimento,bloq)" +
                         " VALUES (?, ?, ?, ?, ?, ?, ?)");
-                pstmt.setInt(1, usr.getId_user());
+                pstmt.setInt(1, usr.getTipo_id());
                 pstmt.setString(2, usr.getLogin());
                 pstmt.setString(3, usr.getNome());
                 pstmt.setString(4, usr.getSenha());
                 pstmt.setString(5, usr.getEmail());
-                pstmt.setDate(6, new java.sql.Date(usr.getData_nascimento().getTime()));
+                if(usr.getData_nascimento() != null){
+                    pstmt.setDate(6, new java.sql.Date(usr.getData_nascimento().getTime()));
+                }
+                else{
+                    pstmt.setDate(6, null);
+                }
                 pstmt.setString(7, usr.getBloq());
 
                 n = pstmt.executeUpdate();
@@ -236,7 +241,7 @@ public class UsrDAO {
                 stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(
                         "SELECT * FROM Usuario WHERE id_user =" +
-                        id+" and lixo = 'false'");
+                        id+" and bloq = 'false'");
                 if (rs.next()) {
                     usuario = carregaDadosNoObjeto(rs);
                 } else {

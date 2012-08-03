@@ -58,9 +58,17 @@ public class ServletPainelControle extends HttpServlet {
                 request.setAttribute("MsgErro", "Login Inválido!");
                 proximaPagina = direciona;
             } else {
+                
+                if(usuario.getTipo_id() != 1){
+                    request.getSession().setAttribute("tipoUser", null);
+                }
+                
+                else{
+                    request.getSession().setAttribute("tipoUser", "1");
+                }
 
                 request.getSession().setAttribute("pass-login", "logado");
-                request.getSession().setAttribute("Usuario", usuario);
+                request.getSession().setAttribute("Usuario", usuario); 
 
                 proximaPagina = "/usrPass?operacao=homePainel";
             }
@@ -79,67 +87,98 @@ public class ServletPainelControle extends HttpServlet {
 
             String msgErroEmail = "";
             String msgErroLogin = "";
-
-            // Verifica se o email informado ja existe
-            Usuario email = UsrDAO.getInstance().validaEmail(request.getParameter("email"));
-
-            if (email != null) {
-                msgErroEmail = "<span style='color:red;'>O E-mail informado ja está em uso.</span>";
-            }
-
-            // Verifica se o CPF informado ja existe
-            Usuario login = UsrDAO.getInstance().validaLogin(request.getParameter("login"));
-
-            if (login != null) {
-                msgErroLogin = "<span style='color:red;'>O login informado já existe.</span>";
-            }
+            String msgErroSenha = "";
+            String msgErroTipo = "";
+            String msgErroData = "";
+            String msgErroNome = "";
             
-            // Verifica se as senhas conferem
-            String senha = "";
-            String pwd = request.getParameter("senha");
-            String pwd2 = request.getParameter("confSenha");
+            // Recuperando dados do formulario
             
-            if(pwd !=""){
-                if(pwd.equals(pwd2)){
-                    senha = pwd;
-                }
-                else{
-                    request.setAttribute("erroSenha", "<span style='color:red;'>As senhas não conferem</span>");
-                }
-            }
+            String tipo = request.getParameter("tipo"); 
+            String nome = request.getParameter("name"); 
+            String email = request.getParameter("email"); 
+            String login = request.getParameter("login"); 
+            String senha = request.getParameter("senha"); 
+            String confSenha = request.getParameter("confSenha"); 
+            String data = request.getParameter("dat_nascimento");      
             
-            if(request.getParameter("tipo").equals("0")){
-                
-                request.setAttribute("erroTipo", "<span style='color:red;'>Defina o tipo de usuario</span>");
-                
-                proximaPagina = "/admin/painel/user/adicionar_usuario.jsp";
-            }
+            // carrega a lista de tipos
             
-            else if(request.getParameter("dat_nascimento").equals("")){
-                
-                request.setAttribute("erroData", "<span style='color:red;'>Preencha o campo data de nascimento</span>");
-                
-                proximaPagina = "/admin/painel/user/adicionar_usuario.jsp";
-            }
+            List<Tipo> lstTipo = UsrDAO.getInstance().leTipo();
+                     
             
-            else{
                 //RECUPERA PARAMENTRO DESCRICAO
                 try{
+                    
+                    if(tipo.equals("") || tipo.equals("0")){
+                        msgErroTipo = "<span class='erro'>Escolha o tipo de usuário</span>";
+                    }
+                    
+                    if(nome.equals("")){
+                        msgErroNome = "<span class='erro'>Preencha o nome</span>";
+                    }
+                    
+                    if(email.equals("")){
+                        msgErroEmail = "<span class='erro'>Preencha o campo de e-mail</span>";
+                    }
+                    
+                    if(login.equals("")){
+                        msgErroLogin = "<span class='erro'>Preencha o campo de login</span>";
+                    }
+                    
+                    if(senha.equals("")){
+                        msgErroSenha = "<span class='erro'>Preencha o campo de senha</span>";
+                    }
+                    
+                    if(data.equals("")){
+                        msgErroData = "";
+                        formUsr.setData_nascimento(null);
+                    }
+                    
+                    // testando as senhas
+                    
+                    String pwd = senha;
+                    String pwd2 = confSenha;
+                    
+                    if(pwd !=""){
+                        if(pwd.equals(pwd2)){
+                            senha = pwd;
+                        }
+                        else{
+                            msgErroSenha = "<span class='erro'>As senhas não conferem</span>";
+                        }
+                    }
+                    
+                    // testando email
+                    
+                    Usuario validaEmail = UsrDAO.getInstance().validaEmail(email);
+                    
+                    if(validaEmail != null){
+                        msgErroEmail = "<span class='erro'>O E-mail informado já existe</span>";
+                    }
+                    
+                    // Testando o login
+                    
+                    Usuario validaLogin = UsrDAO.getInstance().validaLogin(login);
+                    
+                    if(validaLogin != null){
+                        msgErroLogin = "<span class='erro'>O login informado já existe</span>";
+                    }
+                    
+                    // Gravando os dados no objeto para leitura em caso de erro
 
-                    formUsr.setTipo_id(Integer.parseInt(request.getParameter("tipo")));
-                    formUsr.setNome(request.getParameter("name"));
-                    formUsr.setEmail(request.getParameter("email"));
-                    formUsr.setLogin(request.getParameter("login"));
+                    formUsr.setTipo_id(Integer.parseInt(tipo));
+                    formUsr.setNome(nome);
+                    formUsr.setEmail(email);
+                    formUsr.setLogin(login);
                     formUsr.setSenha(senha);
-                    Date dtnascimento = dateFormat.parse(request.getParameter("dat_nascimento"));
-                    formUsr.setData_nascimento(dtnascimento);
-
+                    
                     // Mensagem de erro e proxima pagina
                     String msgErro = formUsr.validaDados(formUsr.INCLUSAO);
 
                     // Monta Usuario com dados validos ou monta mensagens de erro
 
-                    if (msgErro.equals("") && msgErroLogin.equals("") && msgErroEmail.equals("")) {
+                    if (msgErro.equals("") && msgErroLogin.equals("") && msgErroEmail.equals("") && msgErroSenha.equals("") && msgErroTipo.equals("") && msgErroData.equals("")) {
 
                         Usuario usr = new Usuario();
 
@@ -148,7 +187,14 @@ public class ServletPainelControle extends HttpServlet {
                         usr.setEmail(formUsr.getEmail());
                         usr.setLogin(formUsr.getLogin());
                         usr.setSenha(formUsr.getSenha());
-                        usr.setData_nascimento(formUsr.getData_nascimento());
+                        // Testa se a data de nascimento foi preenchida
+                        if(data.equals("")){
+                            usr.setData_nascimento(null);
+                        }
+                        else{
+                            Date dtnascimento = dateFormat.parse(data);
+                            usr.setData_nascimento(dtnascimento);
+                        }                        
                         usr.setBloq("false");
 
                         //EFETUA A GRAVACAO DOS DADOS
@@ -159,28 +205,61 @@ public class ServletPainelControle extends HttpServlet {
                         proximaPagina = "/portifolio?nav=painel";
 
                     }else {
+                        
+                        request.setAttribute("title", "Adicionar");
+                        request.setAttribute("operacao", "cad_usuario");
 
                         request.setAttribute("msgErro", msgErro);
                         request.setAttribute("msgErroEmail", msgErroEmail);
                         request.setAttribute("msgErroLogin", msgErroLogin);                    
-                        request.setAttribute("usr", formUsr);                    
+                        request.setAttribute("msgErroSenha", msgErroSenha);                    
+                        request.setAttribute("msgErroTipo", msgErroTipo);                    
+                        request.setAttribute("msgErroData", msgErroData);
+                        request.setAttribute("lstTipo", lstTipo);
+                        request.setAttribute("usr", formUsr);  
 
                         proximaPagina = "/admin/painel/user/adicionar_usuario.jsp";
                     }
+                    
                 }catch(ParseException e){
+                    
+                    System.out.println(e);
 
-                }
-                
-            }
-            
-            
+                }               
 
         } 
         
         else if (operacao.equals("editCadUser")) {
             
-
-            proximaPagina = "/";
+            String redirect ="/portifolio?nav=painel";
+            
+            int id = Integer.parseInt(request.getParameter("codigo"));
+            int idUser = Integer.parseInt(request.getParameter("user"));           
+                        
+            // Carregando dados do usuario
+            
+            Usuario usuario = UsrDAO.getInstance().carregaDados(id);
+            
+            if(usuario == null || usuario.getId_user() == idUser){
+                request.setAttribute("msg", "<div class='msg_erro'>Usuário não encontrando</div>");
+                redirect = "/portifolio?nav=cmsUser&action=adm_usuario&user=" + idUser;
+            }
+            
+            else{   
+                
+                // Preparando pra gerar o tipo do usuario            
+                List<Tipo> lstTipo = UsrDAO.getInstance().leTipo();
+                
+                request.setAttribute("usr", usuario);
+                request.setAttribute("lstTipo", lstTipo);
+                request.setAttribute("title", "Editar");
+                request.setAttribute("operacao", "edit_usuario");
+                
+                redirect = "/admin/painel/user/adicionar_usuario.jsp";
+            } 
+            
+            proximaPagina = redirect;
+            
         }
         
         else if (operacao.equals("adm_usuario")) {
@@ -192,6 +271,19 @@ public class ServletPainelControle extends HttpServlet {
             List<Usuario> listUsr = UsrDAO.getInstance().leTodos(id);
             
             request.setAttribute("listUsr", listUsr);
+            request.setAttribute("lstTipo", lstTipo);
+
+            proximaPagina = action;
+        } 
+        
+        else if (operacao.equals("add_user")) {
+            
+            int id = Integer.parseInt(request.getParameter("user"));
+            
+            List<Tipo> lstTipo = UsrDAO.getInstance().leTipo();
+            
+            request.setAttribute("title", "Adicionar");
+            request.setAttribute("operacao", "cad_usuario");
             request.setAttribute("lstTipo", lstTipo);
 
             proximaPagina = action;

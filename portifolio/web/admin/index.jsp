@@ -9,14 +9,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
     <head>
+        
+        <%@ include file="/partials/headLinks.jsp" %>
+
+        <title>Painel Administrativo</title>
 
         <%@ include file="/partials/headLinks_css.jsp" %>
         
-        <%@ include file="/partials/headLinks_js.jsp" %>
-
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-        <title>Painel Administrativo</title>
+        <%@ include file="/partials/headLinks_js.jsp" %>        
 
     </head>
 
