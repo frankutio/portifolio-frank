@@ -79,9 +79,10 @@ public class UsrDAO {
                         ResultSet.CONCUR_READ_ONLY);
                 ResultSet rs = stmt.executeQuery(
                         "SELECT * FROM usuario where id_user <> "+ id);
-                while (rs.next()) {
+                
+                    while (rs.next()) {
                     Usuario usr = new Usuario();
-                    
+
                     usr.setId_user(rs.getInt("id_user"));
                     usr.setTipo_id(rs.getInt("Tipo_id"));
                     usr.setLogin(rs.getString("login"));
@@ -89,12 +90,18 @@ public class UsrDAO {
                     usr.setEmail(rs.getString("email"));
                     usr.setData_nascimento(rs.getDate("data_nascimento"));
                     usr.setBloq(rs.getString("bloq"));
-                    
+
                     lstUsers.add(usr);
                 }
+
+                if(lstUsers.isEmpty()){
+                    lstUsers = null;
+                }
+
                 conn.close();
             } catch (SQLException ex) {
                 ex.printStackTrace();
+                
             } finally {
                 try {
                     if (stmt != null) {
@@ -125,14 +132,15 @@ public class UsrDAO {
                         ResultSet.CONCUR_READ_ONLY);
                 ResultSet rs = stmt.executeQuery(
                         "SELECT * FROM Tipo");
-                while (rs.next()) {
+                    while (rs.next()) {
                     Tipo tipo = new Tipo();
-                    
+
                     tipo.setId(rs.getInt("id"));
                     tipo.setTipo_user(rs.getString("tipo_user"));
-                    
+
                     lstTipos.add(tipo);
                 }
+                
                 conn.close();
             } catch (SQLException ex) {
                 ex.printStackTrace();

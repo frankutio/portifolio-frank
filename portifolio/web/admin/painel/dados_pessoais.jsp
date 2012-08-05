@@ -72,7 +72,7 @@
                                 <dt><label for="email">E-mail</label></dt>
                                 <dd><input type="text" name="email" id="email" value="${Usuario.email}" /></dd>
                                 <dt><label for="dat_nascimento">Data de Nascimento</label></dt>
-                                <dd><input type="text" name="dat_nascimento" class="date" id="dat_nascimento" value="${Usuario.getData_nascimentoString()}" /></dd>                        
+                                <dd><input type="text" name="dat_nascimento" class="date" id="dat_nascimento" value="${Usuario.dataNascimento}" /></dd>
                                 <dt>
                                     <div class="info-form">Escreva abaixo, um breve resumo sobre você como profissional, este resumo aparecerá em seu portifólio</div>
                                 </dt>
