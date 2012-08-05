@@ -96,7 +96,7 @@
                                 <dd><input type="password" name="confSenha" id="confSenha" value="" /></dd>
                                 <dt><label for="dat_nascimento">Data de Nascimento</label></dt>
                                 <dd>
-                                    <input type="text" name="dat_nascimento" class="date" id="dat_nascimento" value="${usr.getData_nascimentoString()}" />
+                                    <input type="text" name="dat_nascimento" class="date" id="dat_nascimento" value="${usr.dataNascimento}" />
                                     <c:if test="${msgErroData != null || msgErroData != ''}">
                                         <div>${msgErroData}</div>
                                     </c:if>

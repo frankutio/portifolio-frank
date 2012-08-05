@@ -83,7 +83,7 @@
                                 </tr>
                                 <c:if test="${listUsr == null || listUsr == ''}">
                                     <tr>
-                                        <td colspan="4" class="msg-table empty">
+                                        <td colspan="5" class="msg-table empty">
                                             <div class="center">
                                                 <h5 class="font-normal">Não existem usuários cadastrados</h5>
                                             </div>

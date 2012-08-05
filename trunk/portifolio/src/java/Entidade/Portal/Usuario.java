@@ -18,6 +18,7 @@ public class Usuario {
     private String foto;
     private String about;
     private Date data_nascimento;
+    private String dataNascimento;
     private String bloq;
 
     public String validaDados(int tipoDeValidacao) {
@@ -117,6 +118,15 @@ public class Usuario {
         else{
             return (new SimpleDateFormat("dd/MM/yyyy")).format(data_nascimento);
         }        
+    }
+
+    public String getDataNascimento() {
+        if(data_nascimento == null){
+            return null;
+        }
+        else{
+            return (new SimpleDateFormat("dd/MM/yyyy")).format(data_nascimento);
+        }
     }
 
     /**
