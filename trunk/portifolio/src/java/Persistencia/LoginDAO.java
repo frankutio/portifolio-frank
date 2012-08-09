@@ -28,7 +28,7 @@ public class LoginDAO {
                 stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(
                         "SELECT * FROM usuario WHERE login = '" +
-                        login + "' " + "AND senha = '" + senha + "'");
+                        login + "' " + "AND senha = '" + senha + "' AND bloq = 'false'");
                 if (rs.next()) {
                     usuario = carregaDadosNoObjeto(rs);
                 } else {

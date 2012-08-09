@@ -64,6 +64,51 @@ public class UsrDAO {
         return n;
 
     }
+    
+    // Altera dados pessoais
+    
+    public int alteraDadosPessoais(Usuario usr, int id) {
+
+        int n = 0;
+        Connection conn = Conexao.getInstance().criaConexao();
+
+        if (conn != null) {
+            PreparedStatement pstmt = null;
+            try {
+                pstmt = conn.prepareStatement(
+                        "UPDATE usuario SET " +
+                        "nome = ?, email = ?, data_nascimento= ?, about = ?" +
+                        " WHERE id_user = " + id);
+                pstmt.setString(1, usr.getNome());
+                pstmt.setString(2, usr.getEmail());
+                pstmt.setDate(3, new java.sql.Date(usr.getData_nascimento().getTime()));
+                pstmt.setString(4, usr.getAbout());
+
+                n = pstmt.executeUpdate();
+                
+                
+            } catch (SQLException e) {
+                System.out.println("Inclusao Falhou!!!\n" + e.getMessage());
+                
+                n = 0;
+                
+            } finally {
+                try {
+                    if (pstmt != null) {
+                        pstmt.close();
+                    }
+                    if (conn != null) {
+                        conn.close();
+                    }
+                } catch (SQLException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+
+        return n;
+
+    }
 
     //RECUPERA UMA  LISTA DE TODOS OS Usuarios DO BANCO
     public List<Usuario> leTodos(int id) {
@@ -273,6 +318,154 @@ public class UsrDAO {
 
         }
         return usuario;
+
+    }
+    
+    // Lê os dados de um usário para na servelt
+    public Usuario leDados(int id) {
+
+        Statement stmt = null;
+        Usuario usuario = null;
+        Connection conn = Conexao.getInstance().criaConexao();
+        if (conn != null) {
+            try {
+                stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(
+                        "SELECT * FROM Usuario WHERE id_user =" + id);
+                if (rs.next()) {
+                    usuario = carregaDadosNoObjeto(rs);
+                } else {
+                    usuario = null;
+                }
+                conn.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            } finally {
+                try {
+                    if (stmt != null) {
+                        stmt.close();
+                    }
+                    if (conn != null) {
+                        conn.close();
+                    }
+                } catch (SQLException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+
+        }
+        return usuario;
+
+    }
+    
+    
+    //Bloqueia um usuário no Banco
+    public int bloqUsr(int id) {
+
+        int n = 0;
+        Connection conn = Conexao.getInstance().criaConexao();
+
+        if (conn != null) {
+            PreparedStatement pstmt = null;
+            try {
+                pstmt = conn.prepareStatement(
+                        "UPDATE usuario SET " +
+                        "bloq = 'true' WHERE id_user =" + id);
+                
+                n = pstmt.executeUpdate();
+                
+            } catch (SQLException e) {
+                System.out.println("Inclusao Falhou!!!\n" + e.getMessage());
+                n = 0;
+                
+            } finally {
+                try {
+                    if (pstmt != null) {
+                        pstmt.close();
+                    }
+                    if (conn != null) {
+                        conn.close();
+                    }
+                } catch (SQLException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+
+        return n;
+
+    }
+    
+    //Restaura um usuário no Banco
+    public int restauraUsr(int id) {
+
+        int n = 0;
+        Connection conn = Conexao.getInstance().criaConexao();
+
+        if (conn != null) {
+            PreparedStatement pstmt = null;
+            try {
+                pstmt = conn.prepareStatement(
+                        "UPDATE usuario SET " +
+                        "bloq = 'false' WHERE id_user =" + id);
+                
+                n = pstmt.executeUpdate();
+                
+            } catch (SQLException e) {
+                System.out.println("Inclusao Falhou!!!\n" + e.getMessage());
+                n = 0;
+                
+            } finally {
+                try {
+                    if (pstmt != null) {
+                        pstmt.close();
+                    }
+                    if (conn != null) {
+                        conn.close();
+                    }
+                } catch (SQLException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+
+        return n;
+
+    }
+    
+    //Deleta um usuário no Banco
+    public int delUsr(int id) {
+
+        int n = 0;
+        Connection conn = Conexao.getInstance().criaConexao();
+
+        if (conn != null) {
+            PreparedStatement pstmt = null;
+            try {
+                pstmt = conn.prepareStatement(
+                        "DELETE FROM usuario WHERE id_user = " + id);
+                
+                n = pstmt.executeUpdate();
+                
+            } catch (SQLException e) {
+                System.out.println("Inclusao Falhou!!!\n" + e.getMessage());
+                n = 0;
+                
+            } finally {
+                try {
+                    if (pstmt != null) {
+                        pstmt.close();
+                    }
+                    if (conn != null) {
+                        conn.close();
+                    }
+                } catch (SQLException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+
+        return n;
 
     }
     

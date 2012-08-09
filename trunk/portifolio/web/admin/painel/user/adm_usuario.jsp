@@ -114,7 +114,10 @@
                                             <td class="list-button small">                                                
                                                 <c:if test="${Usuario.tipo_id == 1}">
                                                     <c:if test="${usr.bloq == 'true'}">
-                                                        <a href="/usrPass?operacao=restalCadUser&codigo=${usr.id_user}" class="Recuperar button-gray bt-img restal" title="Recuperar">
+                                                        <a href="/usrPass?operacao=restalCadUser&codigo=${usr.id_user}&user=${Usuario.id_user}" class="Recuperar button-gray bt-img restal" title="Recuperar">
+                                                            <span></span>
+                                                        </a>
+                                                        <a href="/usrPass?operacao=delCadUser&codigo=${usr.id_user}&user=${Usuario.id_user}" class="Deletar button-gray bt-img del" title="Deletar">
                                                             <span></span>
                                                         </a>
                                                     </c:if>
@@ -122,7 +125,7 @@
                                                         <a href="/usrPass?operacao=editCadUser&codigo=${usr.id_user}&user=${Usuario.id_user}" class="alterar button-gray bt-img edit" title="Editar">
                                                             <span></span>
                                                         </a>
-                                                        <a href="/usrPass?operacao=bloqCadUser&codigo=${usr.id_user}" class="bloquear button-gray bt-img bloq" title="Bloquear">
+                                                        <a href="/usrPass?operacao=bloqCadUser&codigo=${usr.id_user}&user=${Usuario.id_user}" class="bloquear button-gray bt-img bloq" title="Bloquear">
                                                             <span></span>
                                                         </a>
                                                     </c:if> 
