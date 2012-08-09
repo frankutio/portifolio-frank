@@ -229,6 +229,112 @@ public class ServletPainelControle extends HttpServlet {
 
         } 
         
+        
+        else if (operacao.equals("alterar_dados_pessoais")) {
+
+            //COVNERTE DATA
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+            // ISNTANCIA A CLASSE - Obtem dados do formulario
+            Usuario formUsr = new Usuario();
+
+            String msgErroEmail = "";
+            String msgErroLogin = "";
+            String msgErroTipo = "";
+            String msgErroData = "";
+            String msgErroNome = "";
+            
+            // Recuperando dados do formulario           
+            
+            int idUser = Integer.parseInt(request.getParameter("usr")); 
+            String nome = request.getParameter("name"); 
+            String email = request.getParameter("email"); 
+            String data = request.getParameter("dat_nascimento");  
+            String about = request.getParameter("about");
+            
+                                
+            
+                //RECUPERA PARAMENTRO DESCRICAO
+                try{
+                    
+                    if(nome.equals("")){
+                        msgErroNome = "<span class='erro'>Preencha o nome</span>";
+                    }
+                    
+                    if(email.equals("")){
+                        msgErroEmail = "<span class='erro'>Preencha o campo de e-mail</span>";
+                    }
+                    
+                    if(data.equals("")){
+                        msgErroData = "<span class='erro'>Preencha o campo de Data</span>";
+                    }
+                    
+                    // testando email
+                    
+                    Usuario validaEmail = UsrDAO.getInstance().validaEmail(email);
+                    
+                    Usuario current = UsrDAO.getInstance().leDados(idUser);
+                    
+                    
+                    if(validaEmail != null){
+                        
+                        if(validaEmail.getEmail().equals(current.getEmail())){
+                            msgErroEmail = "";
+                        }
+                        else{
+                            msgErroEmail = "<span class='erro'>O E-mail informado já existe</span>";
+                        }
+                    }
+                    
+                    // Gravando os dados no objeto para leitura em caso de erro
+                    
+                    formUsr.setNome(nome);
+                    formUsr.setEmail(email);
+                    formUsr.setLogin(current.getLogin());
+                    formUsr.setAbout(about);
+
+                    // Monta Usuario com dados validos ou monta mensagens de erro
+
+                    if (msgErroEmail.equals("") && msgErroTipo.equals("") && msgErroData.equals("") && msgErroNome.equals("")) {
+
+                        Usuario usr = new Usuario();
+                        
+                        usr.setNome(formUsr.getNome());
+                        usr.setEmail(formUsr.getEmail());
+                        usr.setLogin(formUsr.getLogin());
+                        usr.setAbout(formUsr.getAbout());                        
+                        Date dtnascimento = dateFormat.parse(data);
+                        usr.setData_nascimento(dtnascimento);
+                        
+                        //EFETUA A GRAVACAO DOS DADOS
+                        UsrDAO.getInstance().alteraDadosPessoais(usr, idUser);
+                        
+                        Usuario usuario = UsrDAO.getInstance().carregaDados(idUser);
+
+                        request.setAttribute("msg", "<div class='msg_success'>Dados alterados com sucesso</div>");
+                        request.getSession().setAttribute("Usuario", usuario);
+
+                        proximaPagina = "/portifolio?nav=painel";
+
+                    }else {
+                        
+                        request.setAttribute("msgErroEmail", msgErroEmail);
+                        request.setAttribute("msgErroLogin", msgErroLogin);                   
+                        request.setAttribute("msgErroTipo", msgErroTipo);                    
+                        request.setAttribute("msgErroData", msgErroData);
+
+                        proximaPagina = "/portifolio?nav=editDadosPessoais";
+                    }
+                    
+                }catch(ParseException e){
+                    
+                    System.out.println(e);
+
+                }               
+
+        } 
+        
+        
         else if (operacao.equals("editCadUser")) {
             
             String redirect ="/portifolio?nav=painel";
@@ -240,8 +346,13 @@ public class ServletPainelControle extends HttpServlet {
             
             Usuario usuario = UsrDAO.getInstance().carregaDados(id);
             
-            if(usuario == null || usuario.getId_user() == idUser){
-                request.setAttribute("msg", "<div class='msg_erro'>Usuário não encontrando</div>");
+            // Verifica se o usuario tem permissao para editar dados
+            
+            Usuario usr = UsrDAO.getInstance().carregaDados(idUser);
+            
+            if(usuario == null || usuario.getId_user() == idUser || usr.getTipo_id() != 1){
+                
+                request.setAttribute("msg", "<div class='msg_erro'>Usuário não encontrado</div>");
                 redirect = "/portifolio?nav=cmsUser&action=adm_usuario&user=" + idUser;
             }
             
@@ -262,6 +373,119 @@ public class ServletPainelControle extends HttpServlet {
             
         }
         
+        else if (operacao.equals("bloqCadUser")) {
+            
+            int id = Integer.parseInt(request.getParameter("codigo"));
+            int idUser = Integer.parseInt(request.getParameter("user"));
+            
+            // Verifica se o usuario tem permissao para realizar essa ação
+            
+            Usuario usr = UsrDAO.getInstance().carregaDados(idUser);
+            
+            if(usr.getTipo_id() != 1 || usr.getId_user() == id){
+                request.setAttribute("msg", "<div class='msg_erro'>Ação não permitida</div>");
+            }
+            
+            else{
+                
+                // Bloqueia o usuário solicitado
+                
+                int user = UsrDAO.getInstance().bloqUsr(id);
+                
+                if(user != 0){
+                    request.setAttribute("msg", "<div class='msg_success'>Usuário bloqueado com sucesso</div>");
+                }
+                
+                else{
+                    request.setAttribute("msg", "<div class='msg_erro'>O bloqueio falhou</div>");
+                }
+            
+            }
+            
+
+            proximaPagina = "/portifolio?nav=cmsUser&action=adm_usuario&user=" + idUser;
+        } 
+        
+        else if (operacao.equals("restalCadUser")) {
+            
+            int id = Integer.parseInt(request.getParameter("codigo"));
+            int idUser = Integer.parseInt(request.getParameter("user"));
+            
+            // Verifica se o usuario tem permissao para realizar essa ação
+            
+            Usuario usr = UsrDAO.getInstance().carregaDados(idUser);
+            
+            if(usr.getTipo_id() != 1 || usr.getId_user() == id){
+                request.setAttribute("msg", "<div class='msg_erro'>Ação não permitida</div>");
+            }
+            
+            else{
+                
+                // Restaura o usuário solicitado
+                
+                int user = UsrDAO.getInstance().restauraUsr(id);
+                
+                if(user != 0){
+                    request.setAttribute("msg", "<div class='msg_success'>Usuário restaurado com sucesso</div>");
+                }
+                
+                else{
+                    request.setAttribute("msg", "<div class='msg_erro'>A restauração falhou</div>");
+                }
+            
+            }
+            
+
+            proximaPagina = "/portifolio?nav=cmsUser&action=adm_usuario&user=" + idUser;
+        } 
+        
+        
+        else if (operacao.equals("delCadUser")) {
+            
+            int id = Integer.parseInt(request.getParameter("codigo"));
+            int idUser = Integer.parseInt(request.getParameter("user"));
+            
+            
+            // Verifica se o usuario tem permissao para realizar essa ação
+            
+            Usuario usr = UsrDAO.getInstance().carregaDados(idUser);
+            
+            // Verifica se o usuario está bloqueado antes da exclusão
+            
+            Usuario user = UsrDAO.getInstance().leDados(id);           
+            
+            
+            if(usr.getTipo_id() != 1 || usr.getId_user() == id || user == null){
+                request.setAttribute("msg", "<div class='msg_erro'>Ação não permitida</div>");
+            }    
+            
+            else{
+                
+                if(user.getBloq().equals("false")){
+                    request.setAttribute("msg", "<div class='msg_erro'>Bloqueie o usuário antes de excluir</div>");
+                }
+                
+                else{
+                    // Deleta o usuário solicitado
+                
+                    int del = UsrDAO.getInstance().delUsr(id);
+
+                    if(del != 0){
+                        request.setAttribute("msg", "<div class='msg_success'>Usuário deletado com sucesso</div>");
+                    }
+
+                    else{
+                        request.setAttribute("msg", "<div class='msg_erro'>Não foi possivel apagar o usuário</div>");
+                    }
+                }
+            
+            }
+            
+
+            proximaPagina = "/portifolio?nav=cmsUser&action=adm_usuario&user=" + idUser;
+        } 
+        
+        
         else if (operacao.equals("adm_usuario")) {
             
             int id = Integer.parseInt(request.getParameter("user"));
@@ -275,6 +499,7 @@ public class ServletPainelControle extends HttpServlet {
 
             proximaPagina = action;
         } 
+        
         
         else if (operacao.equals("add_user")) {
             

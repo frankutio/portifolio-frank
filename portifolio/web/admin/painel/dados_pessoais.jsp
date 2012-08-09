@@ -51,7 +51,10 @@
                         <h3>Meus Dados Pessoais</h3>
                     </div>
                     <div class="box-content">
-                        <form name="profile" action="#" method="post" id="form-dados-pessoais">
+                        <form name="profile" action="/usrPass" method="post" id="form-dados-pessoais">
+                            <input type="hidden" name="operacao" value="alterar_dados_pessoais" />
+                            <input type="hidden" name="usr" value="${Usuario.id_user}" />
+                            
                             <dl>
                                 <dt><label for="tipo">Tipo</label></dt>
                                 <dd>
@@ -60,7 +63,7 @@
                                         <c:forEach items="${lstTipo}" var="lstTipo">
                                         <option value="${lstTipo.id}"
                                             <c:if  test="${Usuario.tipo_id == lstTipo.id}">
-                                                selected ="${lstTipo.tipo_user}"
+                                                selected ="selected"
                                             </c:if>   > ${lstTipo.tipo_user}</option>
                                         </c:forEach>
                                     </select>
@@ -70,9 +73,19 @@
                                 <dt><label for="login">Login</label></dt>
                                 <dd><input type="text" name="login" id="login" disabled="disabled" value="${Usuario.login}" /></dd>
                                 <dt><label for="email">E-mail</label></dt>
-                                <dd><input type="text" name="email" id="email" value="${Usuario.email}" /></dd>
+                                <dd>
+                                    <input type="text" name="email" id="email" value="${Usuario.email}" />
+                                    <c:if test="${msgErroEmail != null || msgErroEmail != ''}">
+                                        <div>${msgErroEmail}</div>
+                                    </c:if>
+                                </dd>
                                 <dt><label for="dat_nascimento">Data de Nascimento</label></dt>
-                                <dd><input type="text" name="dat_nascimento" class="date" id="dat_nascimento" value="${Usuario.dataNascimento}" /></dd>
+                                <dd>
+                                    <input type="text" name="dat_nascimento" class="date" id="dat_nascimento" value="${Usuario.dataNascimento}" />
+                                    <c:if test="${msgErroData != null || msgErroData != ''}">
+                                        <div>${msgErroData}</div>
+                                    </c:if>
+                                </dd>
                                 <dt>
                                     <div class="info-form">Escreva abaixo, um breve resumo sobre você como profissional, este resumo aparecerá em seu portifólio</div>
                                 </dt>
@@ -82,7 +95,7 @@
                                     <span class="count">397</span>
                                 </dd>
                                 <dt></dt>
-                                <dd class="submit-element"><input type="submit" value="Atualizar" /></dd>
+                                <dd class="submit-element"><input type="submit" value="Atualizar" /></dd>                                
                             </dl>
                         </form>
                     </div>        	
