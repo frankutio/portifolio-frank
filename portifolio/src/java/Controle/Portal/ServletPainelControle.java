@@ -196,6 +196,7 @@ public class ServletPainelControle extends HttpServlet {
                             usr.setData_nascimento(dtnascimento);
                         }                        
                         usr.setBloq("false");
+                        usr.setFoto("/img/perfil/profile_m_default.jpg");
 
                         //EFETUA A GRAVACAO DOS DADOS
                         UsrDAO.getInstance().grava(usr);
@@ -371,6 +372,49 @@ public class ServletPainelControle extends HttpServlet {
             
             proximaPagina = redirect;
             
+        }
+        
+        else if(operacao.equals("alterar_senha")){
+            
+            int id = Integer.parseInt(request.getParameter("usr"));
+            String senha = request.getParameter("senha");
+            String novaSenha = request.getParameter("novaSenha");
+            String confSenha = request.getParameter("confSenha");
+            
+            String msgErroSenha = "";
+            String msgErroNovaSenha = "";
+            
+            // Prepara para recuperar os dados do usuario para validação de senha
+            
+            Usuario usr = UsrDAO.getInstance().carregaDados(id);
+            
+            // Testa se as senhas foram digitadas corretamente
+            
+            if(!senha.equals(usr.getSenha())){
+                msgErroSenha = "<div class='msg_erro'>A senha infomada não confere</div>";
+            } 
+            
+            if(!novaSenha.equals(confSenha)){
+                msgErroNovaSenha = "<div class='msg_erro'>As senhas digitadas não conferem</div>";
+            }
+            
+            if (msgErroSenha.equals("") && msgErroNovaSenha.equals("")) {
+                
+                UsrDAO.getInstance().alteraSenha(id, novaSenha);                
+                
+                request.setAttribute("msg", "<div class='msg_success'>Senha alterada com sucesso</div>");
+                
+                proximaPagina = "/portifolio?nav=painel";
+                
+            }
+            
+            else{
+                request.setAttribute("msgErroSenha", msgErroSenha);
+                request.setAttribute("msgErroNovaSenha", msgErroNovaSenha); 
+
+                proximaPagina = "/admin/painel/senha.jsp";
+            }
+        
         }
         
         else if (operacao.equals("bloqCadUser")) {

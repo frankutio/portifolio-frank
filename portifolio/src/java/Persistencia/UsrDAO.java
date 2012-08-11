@@ -433,6 +433,43 @@ public class UsrDAO {
 
     }
     
+    //Altera a senha de um usuário no Banco
+    public int alteraSenha(int id, String senha) {
+
+        int n = 0;
+        Connection conn = Conexao.getInstance().criaConexao();
+
+        if (conn != null) {
+            PreparedStatement pstmt = null;
+            try {
+                pstmt = conn.prepareStatement(
+                        "UPDATE usuario SET " +
+                        "senha = '" + senha + "' WHERE id_user =" + id);
+                
+                n = pstmt.executeUpdate();
+                
+            } catch (SQLException e) {
+                System.out.println("Inclusao Falhou!!!\n" + e.getMessage());
+                n = 0;
+                
+            } finally {
+                try {
+                    if (pstmt != null) {
+                        pstmt.close();
+                    }
+                    if (conn != null) {
+                        conn.close();
+                    }
+                } catch (SQLException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+
+        return n;
+
+    }
+    
     //Deleta um usuário no Banco
     public int delUsr(int id) {
 

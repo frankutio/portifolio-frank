@@ -7,3 +7,4 @@
 <link type="text/css" rel="stylesheet" href="/css/scrollable.css" />
 <link type="text/css" rel="stylesheet" href="/css/menu.css" />
 <link type="text/css" rel="stylesheet" href="/css/forms.css" />
+<link type="text/css" rel="stylesheet" href="/css/modal.css" />
