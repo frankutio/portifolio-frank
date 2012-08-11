@@ -57,10 +57,10 @@
                     <div class="box-content-photo">
                         <div class="container-details">
                             <div class="foto">
-                                <img src="/img/perfil/profile_m_default.jpg" alt="Imagem do usuario" width="125" height="125" />
+                                <img src="${Usuario.foto}" alt="Imagem do usuario" width="125" height="125" />
                             </div> 
                             <div class="slide-bt">
-                                <a href="#">Alterar foto</a>
+                                <a href="/admin/painel/teste.jsp" class="show-modal">Alterar foto</a>
                             </div>
                         </div>
                     </div> 
@@ -172,6 +172,13 @@
                         $(function(){ 
                             // zebrando as tabelas        
                             zebrar_tabela();
+                        });
+                        
+                        // Modal    
+                        $(".show-modal").live('click', function(element) {
+                            element.preventDefault();
+                            showFancyboxModal(this.href);
+                            return false;
                         });
                         -->
                     </script>

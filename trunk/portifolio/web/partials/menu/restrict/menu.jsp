@@ -15,7 +15,7 @@
                     <li>
                         <span>Minha conta</span>
                         <ul>
-                            <li><a href="/portifolio/nav=alterar-senha">Alterar senha</a></li>
+                            <li><a href="/portifolio?nav=alterar-senha">Alterar senha</a></li>
                         </ul>
                     </li>
                 </ul>                
