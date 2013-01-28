@@ -1,0 +1,50 @@
+body.inner {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+.sidebar-nav {
+    padding: 9px 0;
+}
+
+.header{
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+    padding: 7px 0;
+}
+
+.navbar-fixed-top .img-logo{
+    width: 101px;
+}
+
+.header img{
+    max-width: initial;
+}
+
+.header .nav-icon{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    padding: 14px;    
+}
+
+.header-unit .content-header{
+    font-weight: bold;
+    text-shadow: 0 1px 1px #fff;    
+}
+
+.header-unit .content-header h3{
+    margin-bottom: 17px;
+}
+
+ .content-header{
+    text-align: center;
+    padding: 10px;;
+    font-size: 0.9em;
+    background-color: #eeeeee;
+}
+
+.less-padding-l-r{
+    padding-left: 0px;
+    padding-right: 0px;
+}
