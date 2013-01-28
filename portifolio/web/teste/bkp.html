@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Site Jquery Mobile</title>
+
+<!--        <link rel="stylesheet"  href="css/jquery.mobile-1.2.0.css" />-->
+        <link rel="stylesheet"  href="css/jquery.mobile-custon.css" />
+        <link rel="stylesheet" href="css/jqm-docs.css"/>        
+        <link rel="stylesheet" href="css/medi.css"/>
+        <link rel="stylesheet" href="css/geral.css"/>
+
+        <script src="js/jquery.js"></script>
+        <script src="js/jqm-docs.js"></script>
+        <script src="js/jquery.mobile-1.2.0.js"></script>
+
+    </head>
+
+    <body>
+
+        <div data-role="page" class="type-interior">	
+            
+         <div class="nav-container">
+
+            </div>
+
+            <div id="page">
+                <header data-role="header"  data-theme="d" id="header">
+
+                    <div class="header">
+                        <div class="logo">
+                            <a href="#"><img src="img/logo2.png" alt="Logo Medicando" title="Home" class="img-logo" /></a>
+                        </div>
+                        <div class="nav-icon">
+                            <a href="#"><img src="img/menu.png" alt="menu" title="menu" /></a>
+                        </div>                
+                    </div>
+
+                </header>
+                
+                <section data-role="header"  data-theme="c">
+                    <h3>Busque por nome ou especialidade</h3>
+                    <input type="search" name="search" id="search-basic" value="" />                    
+                    <div class="content-form">
+                            <div data-role="collapsible" data-theme="c" data-content-theme="c" data-collapsed-icon="arrow-u" data-expanded-icon="arrow-d" data-inset="false">
+                                <h2>Filtro</h2>
+                                <form action="form.php" method="post">                            
+                                    <div data-role="fieldcontain">
+                                       <label for="planos" class="select font-normal">Planos:</label>
+                                       <select name="planos" id="select-choice-1" data-native-menu="false">
+                                          <option value="standard">Todos</option>
+                                          <option value="rush">Rush: 3 days</option>
+                                          <option value="express">Express: next day</option>
+                                          <option value="overnight">Overnight</option>
+                                       </select>
+                                    </div>
+                                    
+                                    <div  data-role="fieldcontain">
+                                        <fieldset data-role="controlgroup">
+                                            <legend>Filtrar busca por:</legend>
+                                            <input type="checkbox" name="profissional" id="profissional" class="custom" />
+                                            <label for="profissional">Profissional</label>
+
+                                            <input type="checkbox" name="clinica" id="clinica" class="custom" />
+                                            <label for="clinica">Clinica</label>
+                                        </fieldset>
+                                    </div>
+                                    
+                                    <div class="ui-body ui-body-b">
+                                        <fieldset class="ui-grid-a">
+                                            <div class="ui-block-a bt-form">
+                                                <button type="submit" data-theme="d" data-corners="false">Cancelar</button>
+                                            </div>
+                                            <div class="ui-block-b bt-form bt-target">
+                                                <button type="submit" data-theme="a" data-corners="false">Buscar</button>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                    </div>
+                </section>
+
+
+                <section class="content">
+                    <div>
+                        <ul data-role="listview" >
+                            <li>
+                                <a href="resultado_busca.html" data-transition="pop">
+                                    <img src="img/01.jpg" alt="Dr. Fulano" />
+                                    <h3>Dr. Medinaldo da Silva</h3>
+                                    <p>Taguatinga Sul - DF</p>
+                                    <p>(61) 3397-4794</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="resultado_busca.html" data-transition="pop">
+                                    <img src="img/02.jpg" alt="Dr. Fulano" />
+                                    <h3>Dr. Marinilson Ufa Soares</h3>
+                                    <p>Taguatinga Sul - DF</p>
+                                    <p>(61) 3397-4794</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="resultado_busca.html" data-transition="pop">
+                                    <img src="img/01.jpg" alt="Dr. Fulano" />
+                                    <h3>Dr. Medinaldo da Silva</h3>
+                                    <p>Taguatinga Sul - DF</p>
+                                    <p>(61) 3397-4794</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="resultado_busca.html" data-transition="pop">
+                                    <img src="img/02.jpg" alt="Dr. Fulano" />
+                                    <h3>Dr. Marinilson Ufa Soares</h3>
+                                    <p>Taguatinga Sul - DF</p>
+                                    <p>(61) 3397-4794</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="resultado_busca.html" data-transition="pop">
+                                    <img src="img/01.jpg" alt="Dr. Fulano" />
+                                    <h3>Dr. Medinaldo da Silva</h3>
+                                    <p>Taguatinga Sul - DF</p>
+                                    <p>(61) 3397-4794</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="resultado_busca.html" data-transition="pop">
+                                    <img src="img/02.jpg" alt="Dr. Fulano" />
+                                    <h3>Dr. Marinilson Ufa Soares</h3>
+                                    <p>Taguatinga Sul - DF</p>
+                                    <p>(61) 3397-4794</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </section>    
+
+
+                <footer data-role="footer" class="footer-docs" data-theme="f" id="footer">
+                    <p class="jqm-version"></p>
+                    <p>&copy; 2012 jQuery Foundation and other contributors</p>
+                </footer>
+
+            </div>   
+
+
+        </div>
+
+    </body>
+
+</html>
