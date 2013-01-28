@@ -1,0 +1,82 @@
+/* CSS Document */
+
+#page{
+    overflow: hidden;
+}
+
+.header{
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+    padding: 4px 0;
+}
+
+.header img.img-logo{
+    width: 101px;
+}
+
+.header img{
+    max-width: initial;
+}
+
+.header .nav-icon{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    padding: 14px;
+}
+
+.content-header{
+    text-align: center;
+    padding: 0 5px 0 5px;
+    font-size: 0.8em;
+}
+
+.content{
+    font-size: 14px;
+}
+
+.ui-li-thumb{
+    top: 6px;
+    left: 4px;
+    border-radius: 5px;
+}
+
+.content-form{
+    margin: 19px;
+}
+
+.font-normal{
+    font-weight: normal;
+}
+
+.center{
+    text-align: center;
+}
+
+label{
+    margin-right: 10px;
+}
+
+.bt-form{
+     font-size: 100%;
+}
+
+.ui-header .bt-form .ui-btn-inner, .ui-footer .bt-form .ui-btn-inner, .ui-mini .bt-form .ui-btn-inner{ 
+    font-size: 16px;
+}
+
+.collaps-list{
+    margin-bottom: 30px;
+}
+
+.footer-docs{
+    padding: 15px 0px;
+    text-align: center;
+    font-size: 13px;
+}
+
+#footer a{
+    color: #707070;
+    font-size: 12px;
+}
