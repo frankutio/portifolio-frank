@@ -28,6 +28,10 @@ body.inner {
     padding: 14px;    
 }
 
+.header-unit{
+    margin-bottom: 21px;
+}
+
 .header-unit .content-header{
     font-weight: bold;
     text-shadow: 0 1px 1px #fff;    
@@ -48,3 +52,180 @@ body.inner {
     padding-left: 0px;
     padding-right: 0px;
 }
+
+.ui-content{
+    border-width: 0;
+    overflow: visible;
+    overflow-x: hidden;
+    padding: 15px;
+    color: #707070;
+}
+
+.txt-center{
+    text-align: center;
+}
+
+.content-form{
+    margin: 19px;
+}
+
+.ico-32{
+    width: 37px!important;
+    height: 38px;
+    background-color: #00A98F;
+    background-image: url("../img/icones_mono_f03.png");
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    text-indent: -9024px;
+}
+
+.ico-32:hover{
+    background-color: #00A98F;
+}
+
+.ico-32.search{
+    background-position: -1224px -235px;
+}
+
+/** listas ***/
+
+.accordion {
+    margin-bottom: 30px;
+}
+
+.accordion-heading{
+    font-size: 16px;
+    display: block;
+    margin: 0 -15px;
+    padding: 0;
+    position: relative;
+}
+
+.accordion-heading .accordion-toggle{
+    color: #2f3e46;
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin: 0;
+    padding-left: 0px;
+    border-left-width: 0;
+    border-right-width: 0;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    background: #eee;
+    font-weight: bold;
+    text-shadow: 0 1px 0 #fff;
+    background-image: -webkit-gradient(linear, left top, left bottom, from( #fff), to( #f1f1f1)); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient( #fff, #f1f1f1); /* Chrome 10+, Saf5.1+ */
+    background-image:    -moz-linear-gradient( #fff, #f1f1f1); /* FF3.6 */
+    background-image:     -ms-linear-gradient( #fff, #f1f1f1); /* IE10 */
+    background-image:      -o-linear-gradient( #fff, #f1f1f1); /* Opera 11.10+ */
+    background-image:         linear-gradient( #fff, #f1f1f1);
+}
+
+.accordion-heading .accordion-toggle._active, .accordion-heading .accordion-toggle._active:hover{
+    color: #FFF;
+    border: 1px solid #ccc;
+    background: #419E90;
+    text-shadow: none;
+    background-image: -webkit-gradient(linear, left top, left bottom, from( #419E90), to( #2C6C62)); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient( #419E90, #2C6C62); /* Chrome 10+, Saf5.1+ */
+    background-image:    -moz-linear-gradient( #419E90, #2C6C62); /* FF3.6 */
+    background-image:     -ms-linear-gradient( #419E90, #2C6C62); /* IE10 */
+    background-image:      -o-linear-gradient( #419E90, #2C6C62); /* Opera 11.10+ */
+    background-image:         linear-gradient( #419E90, #2C6C62);
+}
+
+.accordion-heading .accordion-toggle:hover{
+    background-image: -webkit-gradient(linear, left top, left bottom, from( #f6f6f6), to( #e0e0e0)); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient( #f6f6f6, #e0e0e0); /* Chrome 10+, Saf5.1+ */
+    background-image:    -moz-linear-gradient( #f6f6f6, #e0e0e0); /* FF3.6 */
+    background-image:     -ms-linear-gradient( #f6f6f6, #e0e0e0); /* IE10 */
+    background-image:      -o-linear-gradient( #f6f6f6, #e0e0e0); /* Opera 11.10+ */
+    background-image:         linear-gradient( #f6f6f6, #e0e0e0);
+}
+
+.accordion-heading .btn-inner{
+    font-size: 16px;
+    padding-left: 40px;
+    border-top: 0 none;
+    border-color: rgba(255,255,255,.3);
+    min-width: .75em;
+    display: block;
+    position: relative;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    zoom: 1;
+}
+
+.accordion-heading .btn-inner .btn-text{
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.accordion-heading .btn-inner .btn-icon{
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    margin-top: -9px;
+    width: 18px;
+    height: 18px;
+    background: #666;
+    background: rgba(0,0,0,.4);
+    background-image: url("../img/icones_mono_f03.png");
+    background-repeat: no-repeat;
+    -moz-border-radius: 9px;
+    -webkit-border-radius: 9px;
+    border-radius: 9px;
+}
+
+.accordion-heading .btn-inner .btn-icon.icon-arrow-d{
+    background-position: -216px -324px;
+}
+
+.accordion-heading .btn-inner .btn-icon.icon-arrow-u{
+    background-position: -180px -324px;
+}
+
+.accordion-inner{
+    display: block;
+    margin: 0 -15px;
+    padding: 10px 15px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top: none;
+}
+
+.accordion-heading.inner{
+    margin: -1px 0 0 0;
+}
+
+.accordion-inner.inner {
+    margin: 0;
+}
+
+.accordion-heading.inner .accordion-toggle{
+    width: auto;
+    margin: 0px -1px 0px -1px;
+}
+
+.less-border{
+    border: 0 none;
+}
+
+.content-scrollable{
+    max-height: 124px;
+    overflow: hidden;
+    overflow-x: hidden; 
+    overflow-y: auto; 
+}
+
+.content-scrollable .radio, .content-scrollable .checkbox{
+    min-height: 31px;
+}
+
