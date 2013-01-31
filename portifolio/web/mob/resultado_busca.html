@@ -2,43 +2,137 @@
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <title>Bootstrap 101 Template</title>
-        
+        <title>Buscador Medicando</title>
+
         <link href="css/bootstrap.css" rel="stylesheet" media="screen" />
         <link href="css/geral.css" rel="stylesheet" />        
+        <link href="css/bootstrap-responsive.css" rel="stylesheet" />        
 
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
     </head>
-    
+
     <body class="inner">
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
                     <div class="header">
+                        <span class="nav-icon left">
+                            <a href="#" class="ico menu"><i class="icons-back"></i></a>
+                        </span>
                         <div class="logo">
-                            <a href="#"><img src="img/logo-top.png" alt="Logo Medicando" title="Home" class="img-logo" /></a>
+                            <a href="#"><i class="icons-logo"></i></a>
                         </div>
-                        <div class="nav-icon">
-                            <a href="#"><img src="img/menu.png" alt="menu" title="menu" /></a>
-                        </div>                
+                        <span class="nav-icon right">
+                            <a href="#" class="ico menu"><i class="icons-menu"></i></a>
+                        </span>                
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <div class="container-fluid">
+
             <div class="row-fluid">
+
                 <div class="span12">
-                    <div class="hero-unit">fsf</div>
-                </div>                
+
+                    <div class="hero-unit search">
+                        <form action="resultado_busca.html" method="post">
+                            <div class="input-append">
+                                <input class="span11" id="appendedInputButton" type="text" placeholder="Busque aqui" />
+                                <input type="submit" class="btn ico-32 search" />
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="title-session icons">
+                        <h4>X Resultados encontrados Resultados encontrados</h4>
+                        <i class="icon search"></i>
+                    </div>
+
+                    <div class="box-content actions">
+                        <p class="txt-center">
+                            <a class="btn">Refine sua busca <i class="icon-filter"></i></a>
+                        </p>
+
+                        <div  class="content-form">
+                            <form class="form-horizontal">
+                                <div class="control-group">
+                                    <label class="control-label" for="order">Ordenar por:</label>
+                                    <div class="controls">
+                                        <select id="order">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Resultado de busca -->
+                    <section>
+                        <div class="list">
+                            <ul>
+                                <li>
+                                    <div class="content-list">
+                                        <a href="perfil.html">
+                                            <img src="img/01.jpg" alt="Imagem" class="thumb img-rounded" />
+                                            <h3 class="li-heading">Dr. Medinaldo da Silva</h3>
+                                            <p class="li-desc">Especialidades</p>
+                                            <p class="li-desc">Bairros</p>
+                                            <i class="btn-icon icon-arrow-r">&nbsp;</i>
+                                        </a>
+                                    </div>                                    
+                                </li>
+                                <li>
+                                    <div class="content-list">
+                                        <a href="perfil.html" class="_active">
+                                            <img src="img/02.jpg" alt="Imagem" class="thumb img-rounded" />
+                                            <h3 class="li-heading">Dr. Marinilson Mutumbo Silva</h3>
+                                            <p class="li-desc">Especialidades</p>
+                                            <p class="li-desc">Bairros</p>
+                                            <i class="btn-icon icon-arrow-r">&nbsp;</i>
+                                        </a>
+                                    </div>                                    
+                                </li>
+                                <li>
+                                    <div class="content-list">
+                                        <a href="perfil.html">
+                                            <img src="img/01.jpg" alt="Imagem" class="thumb img-rounded" />
+                                            <h3 class="li-heading">Dr. Medinaldo da Silva</h3>
+                                            <p class="li-desc">Especialidades</p>
+                                            <p class="li-desc">Bairros</p>
+                                            <i class="btn-icon icon-arrow-r">&nbsp;</i>
+                                        </a>
+                                    </div>                                    
+                                </li>                                
+                                <li class="load">
+                                    <a href="#">Carregar mais</a>                                
+                                </li>                                
+                            </ul>
+                        </div>
+                    </section>
+                    <!-- Resultado de busca -->
+
+                </div>     
+
             </div>
-            
+
+            <div class="clear"></div>           
+
         </div>
-        
+
+        <footer class="txt-center footer">
+            <p><a href="http://www.medicando.com.br">Versão desktop</a></p>
+        </footer>
+
     </body>
 </html>

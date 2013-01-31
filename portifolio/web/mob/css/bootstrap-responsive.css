@@ -788,17 +788,17 @@
 
 @media (max-width: 767px) {
   body {
-    padding-right: 20px;
-    padding-left: 20px;
+/*    padding-right: 20px;
+    padding-left: 20px;*/
   }
   .navbar-fixed-top,
   .navbar-fixed-bottom,
   .navbar-static-top {
-    margin-right: -20px;
-    margin-left: -20px;
+    margin-right: 0px;
+    margin-left: 0px;
   }
   .container-fluid {
-    padding: 0;
+/*    padding: 0;*/
   }
   .dl-horizontal dt {
     float: none;
@@ -938,11 +938,11 @@
 
 @media (max-width: 979px) {
   body {
-    padding-top: 0;
+    padding-top: 60px;
   }
   .navbar-fixed-top,
   .navbar-fixed-bottom {
-    position: static;
+    position: fixed;
   }
   .navbar-fixed-top {
     margin-bottom: 20px;
@@ -952,7 +952,7 @@
   }
   .navbar-fixed-top .navbar-inner,
   .navbar-fixed-bottom .navbar-inner {
-    padding: 5px;
+    padding: 0px;
   }
   .navbar .container {
     width: auto;
