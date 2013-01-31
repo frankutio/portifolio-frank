@@ -3324,7 +3324,7 @@ input[type="button"].btn-block {
   background-image: -o-linear-gradient(top, #007765, #00594B);
   background-image: linear-gradient(to bottom, #007765, #00594B);
   background-repeat: repeat-x;
-  border-color: #0044cc #0044cc #002a80;
+  border-color: #007765 #007765 #00594B;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#007765', endColorstr='#00594B', GradientType=0);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
