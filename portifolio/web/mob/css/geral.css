@@ -80,6 +80,10 @@ body.home {
     text-align: center;
 }
 
+.txt-right{
+    text-align: right;
+}
+
 .content-form{
     margin: 19px;
 }
@@ -118,13 +122,13 @@ body.home {
 
 [class^="icons-"],
 [class*=" icons-"] {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  background-image: url("../img/icones_mono_f03.png");
-  background-position: 0px 0px;
-  background-repeat: no-repeat;
-  border: 0;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-image: url("../img/icones_mono_f03.png");
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    border: 0;
 }
 
 .icons-logo-largue{
@@ -140,7 +144,7 @@ body.home {
 }
 
 .icons-back{
-    background-position: -293px -241px;
+    background-position: -1415px 0px;
     width: 26px;
     height: 21px;
 }
@@ -153,7 +157,6 @@ body.home {
 
 .title-session{
     position: relative;
-    border-bottom: 1px solid #CCCCCC;
     margin-bottom: 6px;
     padding: 5px;
 }
@@ -330,7 +333,7 @@ body.home {
 }
 
 .box-content.actions{
-    padding: 20px 0 10px 0;
+    padding: 0px 0 10px 0;
 }
 
 .list{
@@ -443,7 +446,8 @@ body.home {
 }
 
 .accordion-heading .accordion-toggle._active, .accordion-heading .accordion-toggle._active:hover,
-.list ul li .content-list a._active, .list ul li .content-list a._active:hover
+.list ul li .content-list a._active, .list ul li .content-list a._active:hover, 
+.menu-nav .accordion-heading .accordion-toggle._active
 {
     color: #FFF;
     border: 1px solid #ccc;
@@ -515,6 +519,10 @@ body.home {
     margin-bottom: 17px;
 }
 
+.btn-filter{
+    padding: 5px;
+}
+
 .footer{
     padding: 6px;
     background-color: #F2F6D6;
@@ -524,4 +532,137 @@ body.home {
 .footer p{
     margin: 2px 0 0 0;
     font-size: 11px;
+}
+
+/*** Menu ***/
+
+body._actived-menu{
+    padding-top: 0px;
+}
+
+#viewport{    
+    position: relative;
+    width: 100%;
+}
+
+#viewport._actived-menu{
+    overflow: hidden;
+    max-height: 638px;
+    min-height: 500px;
+}
+
+.mask{
+    display: none;
+    visibility: hidden;
+}
+
+._actived-menu #pager, ._actived-menu .navbar{
+    margin-right: 268px;
+    overflow: hidden;
+    
+}
+
+._actived-menu .mask{
+    display: block;
+    visibility: visible;
+    cursor: pointer;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 3025;
+}
+
+._actived-menu .navbar{
+    position: relative;
+    width: 100%;
+}
+
+.menu-nav{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    width: 260px;
+    z-index: 3050;
+    border: 1px solid #bbb;
+    color: #fff;
+    text-shadow: 0 1px 1px #111;
+    padding: 0 5px 0 5px;
+    background: #444 /*{a-body-background-color}*/;
+    background-image: -webkit-gradient(linear, left top, left bottom, from( #444 /*{a-body-background-start}*/), to( #222)); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient( #444, #222); /* Chrome 10+, Saf5.1+ */
+    background-image:    -moz-linear-gradient( #444, #222); /* FF3.6 */
+    background-image:     -ms-linear-gradient( #444, #222); /* IE10 */
+    background-image:      -o-linear-gradient( #444, #222); /* Opera 11.10+ */
+    background-image:         linear-gradient( #444, #222);
+}
+
+.menu-nav h4{
+    font-size: 13px;
+}
+
+.menu-nav .side-menu-content .accordion-heading .btn-inner{
+    font-size: 12px;
+}
+
+.menu-nav .side-menu-content .accordion label, .menu-nav label{
+    font-size: 12px;
+}
+
+.menu-nav .side-menu-content .accordion .content-scrollable{
+    background-color: #5D5D5D;
+}
+
+.menu-nav .side-menu-content .accordion-group{
+    border: solid 1px #1D1D1D;
+}
+
+.menu-nav .accordion-heading .accordion-toggle{
+    color: #fff;
+    display: block;
+    text-align: left;
+    margin: -1px;
+    padding-left: 0px;
+    border-left-width: 0;
+    border-right-width: 0;
+    text-decoration: none;
+    border: 1px solid #111;
+    background: #333;
+    font-weight: bold;
+    text-shadow: 0 1px 0 #111;
+    background-image: -webkit-gradient(linear, left top, left bottom, from( #444), to( #2d2d2d)); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient( #444, #2d2d2d); /* Chrome 10+, Saf5.1+ */
+    background-image:    -moz-linear-gradient( #444, #2d2d2d); /* FF3.6 */
+    background-image:     -ms-linear-gradient( #444, #2d2d2d); /* IE10 */
+    background-image:      -o-linear-gradient( #444, #2d2d2d); /* Opera 11.10+ */
+    background-image:         linear-gradient( #444, #2d2d2d);
+}
+
+.menu-nav .help-block{
+    border-bottom: 1px solid #242a37;
+    border-top: none;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08);
+    color: rgb(155, 155, 155);
+    padding-left: 10px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .6);
+    margin: 0 -5px 0-5px;
+    background: #5D5D5D;
+    padding: 3px 0 3px 2px;
+    background-image: -webkit-gradient(linear, left top, left bottom, from( #5D5D5D), to( #4E4E4E)); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient( #5D5D5D, #4E4E4E); /* Chrome 10+, Saf5.1+ */
+    background-image:    -moz-linear-gradient( #5D5D5D, #4E4E4E); /* FF3.6 */
+    background-image:     -ms-linear-gradient( #5D5D5D, #4E4E4E); /* IE10 */
+    background-image:      -o-linear-gradient( #5D5D5D, #4E4E4E); /* Opera 11.10+ */
+    background-image:         linear-gradient( #5D5D5D, #4E4E4E);
+}
+
+.menu-nav .form-actions{
+    border: 1px solid #444 ;
+    background: #444;
+    color: #fff;
+}
+
+.menu-nav .accordion-heading .accordion-toggle._active{
+    border: solid 1px #111;
 }
