@@ -43,7 +43,7 @@ public class UsrDAO {
                     pstmt.setDate(6, null);
                 }
                 pstmt.setString(7, usr.getBloq());
-                pstmt.setString(8, usr.getSuper());
+                pstmt.setString(8, usr.getSuperUsr());
 
                 n = pstmt.executeUpdate();
             } catch (SQLException e) {
@@ -136,7 +136,7 @@ public class UsrDAO {
                     usr.setEmail(rs.getString("email"));
                     usr.setData_nascimento(rs.getDate("data_nascimento"));
                     usr.setBloq(rs.getString("bloq"));
-                    usr.setSuper(rs.getString("super"));
+                    usr.setSuperUsr(rs.getString("super"));
 
                     lstUsers.add(usr);
                 }
@@ -525,7 +525,7 @@ public class UsrDAO {
         usuario.setAbout(rs.getString("about"));
         usuario.setData_nascimento(rs.getDate("data_nascimento"));
         usuario.setBloq(rs.getString("bloq"));
-        usuario.setSuper(rs.getString("super"));
+        usuario.setSuperUsr(rs.getString("super"));
 
         return usuario;
 
@@ -549,7 +549,7 @@ public class UsrDAO {
                 pstmt.setString(3, usr.getSenha());
                 pstmt.setString(4, usr.getEmail());
                 pstmt.setDate(5, new java.sql.Date(usr.getData_nascimento().getTime()));
-                pstmt.setString(6, usr.getSuper());
+                pstmt.setString(6, usr.getSuperUsr());
 
                 n = pstmt.executeUpdate();
                 

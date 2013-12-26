@@ -29,6 +29,8 @@ public class ServletPainelControle extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
 
 
         //RECEBE O TIPOD E OPERACAO A REALIZAR
@@ -59,14 +61,20 @@ public class ServletPainelControle extends HttpServlet {
                 proximaPagina = direciona;
             } else {
                 
-                if(usuario.getTipo_id() != 1 && usuario.getSuper().equals("false")){
+                if(usuario.getTipo_id() != 1 && usuario.getSuperUsr().equals("false")){
                     request.getSession().setAttribute("tipoUser", null);
-                    request.getSession().setAttribute("superUser", null);
+                    request.getSession().setAttribute("superUser", null);                    
                 }
                 
                 else{
                     request.getSession().setAttribute("tipoUser", "1");
+                    request.getSession().setAttribute("Permissao", "1");
+                }  
+                
+                if(usuario.getTipo_id() == 2){
+                    request.getSession().setAttribute("Permissao", "2");
                 }
+                
 
                 request.getSession().setAttribute("pass-login", "logado");
                 request.getSession().setAttribute("Usuario", usuario);
@@ -142,6 +150,16 @@ public class ServletPainelControle extends HttpServlet {
                         formUsr.setData_nascimento(null);
                     }
                     
+                    // prepara o super usuario para gravar a sua permissão no banco
+            
+                    if(superUsr.equals("sim")){
+                        superUsr = "true";
+                    }
+                    
+                    if(superUsr.equals("nao")){
+                        superUsr = "false";
+                    }
+                    
                     // testando as senhas
                     
                     String pwd = senha;
@@ -179,7 +197,7 @@ public class ServletPainelControle extends HttpServlet {
                     formUsr.setEmail(email);
                     formUsr.setLogin(login);
                     formUsr.setSenha(senha);
-                    formUsr.setSuper(superUsr);
+                    formUsr.setSuperUsr(superUsr);
                     
                     // Mensagem de erro e proxima pagina
                     String msgErro = formUsr.validaDados(formUsr.INCLUSAO);
@@ -195,7 +213,7 @@ public class ServletPainelControle extends HttpServlet {
                         usr.setEmail(formUsr.getEmail());
                         usr.setLogin(formUsr.getLogin());
                         usr.setSenha(formUsr.getSenha());
-                        usr.setSuper(formUsr.getSuper());
+                        usr.setSuperUsr(formUsr.getSuperUsr());
                         // Testa se a data de nascimento foi preenchida
                         if(data.equals("")){
                             usr.setData_nascimento(null);
@@ -368,7 +386,8 @@ public class ServletPainelControle extends HttpServlet {
             String senha = request.getParameter("senha"); 
             String confSenha = request.getParameter("confSenha"); 
             String data = request.getParameter("dat_nascimento");  
-            String superUsr = request.getParameter("super");
+            String superUsr = request.getParameter("super");           
+            
                                 
             
                 //RECUPERA PARAMENTRO DESCRICAO
@@ -411,7 +430,17 @@ public class ServletPainelControle extends HttpServlet {
                         else{
                             msgErroSenha = "<span class='erro'>As senhas não conferem</span>";
                         }
-                    }                  
+                    }
+                    
+                    // prepara o super usuario para gravar a sua permissão no banco
+            
+                    if(superUsr.equals("sim")){
+                        superUsr = "true";
+                    }
+                    
+                    if(superUsr.equals("nao")){
+                        superUsr = "false";
+                    }
                                       
                                        
                     // Gravando os dados no objeto para leitura em caso de erro
@@ -421,7 +450,7 @@ public class ServletPainelControle extends HttpServlet {
                     formUsr.setNome(nome);
                     formUsr.setEmail(email);
                     formUsr.setSenha(senha);
-                    formUsr.setSuper(superUsr);
+                    formUsr.setSuperUsr(superUsr);
                     
                     // Mensagem de erro e proxima pagina
                     String msgErro = formUsr.validaDados(formUsr.ALTERACAO);
@@ -437,7 +466,7 @@ public class ServletPainelControle extends HttpServlet {
                         usr.setNome(formUsr.getNome());
                         usr.setEmail(formUsr.getEmail());
                         usr.setSenha(formUsr.getSenha());
-                        usr.setSuper(formUsr.getSuper());
+                        usr.setSuperUsr(formUsr.getSuperUsr());
                         // Testa se a data de nascimento foi preenchida
                         if(data.equals("")){
                             usr.setData_nascimento(null);
@@ -493,9 +522,9 @@ public class ServletPainelControle extends HttpServlet {
             
             Usuario usr = UsrDAO.getInstance().carregaDados(idUser);
             
-            if(usuario == null || usuario.getId_user() == idUser || usr.getSuper().equals("false") && usr.getTipo_id() != 1){
+            if(usuario == null || usuario.getId_user() == idUser || usr.getSuperUsr() == null && usr.getTipo_id() != 1 || usr.getTipo_id() == 2 && usuario.getTipo_id() == 1){
                 
-                request.setAttribute("msg", "<div class='msg_erro'>Usuário não encontrado</div>");
+                request.setAttribute("msg", "<div class='msg_erro'>Usuário não encontrado ou você não possui permissão para acessar essa funcionlidade.</div>");
                 redirect = "/portifolio?nav=cmsUser&action=adm_usuario&user=" + idUser;
             }
             
@@ -693,9 +722,16 @@ public class ServletPainelControle extends HttpServlet {
             
             List<Tipo> lstTipo = UsrDAO.getInstance().leTipo();
             
-            request.setAttribute("title", "Adicionar");
-            request.setAttribute("operacao", "cad_usuario");
-            request.setAttribute("lstTipo", lstTipo);
+            if(id != 1 || httpRequest.getSession().getAttribute("Permissao") == "2"){
+                action = "/usrPass?operacao=homePainel";
+                request.setAttribute("MsgErro", "<div class='msg-erro'>Ação não permitida</div>");
+            }
+            
+            else{
+                request.setAttribute("title", "Adicionar");
+                request.setAttribute("operacao", "cad_usuario");
+                request.setAttribute("lstTipo", lstTipo);
+            } 
 
             proximaPagina = action;
         } 

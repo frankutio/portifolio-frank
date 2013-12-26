@@ -30,8 +30,8 @@ public class FilterPainelUser implements Filter {
 
         try {
             if (httpRequest.getSession().getAttribute("tipoUser") == null && httpRequest.getSession().getAttribute("superUser") == null) {
-                httpRequest.setAttribute("MsgErro", "<div class='msg-erro'>Acão não permitida</div>");
-                httpRequest.getRequestDispatcher("/portifolio?nav=painel").forward(request, response);
+                httpRequest.setAttribute("MsgErro", "<div class='msg-erro'>Ação não permitida</div>");
+                httpRequest.getRequestDispatcher("/usrPass?operacao=homePainel").forward(request, response);
             }
             else {
                 chain.doFilter(request, response);
