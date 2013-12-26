@@ -9,11 +9,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
     <head>
-        
+
         <%@ include file="/partials/headLinks.jsp" %>
-        
+
         <title>Painel Administrativo</title>
-        
+
         <%@ include file="/partials/headLinks_css.jsp" %>
         <%@ include file="/partials/restrict/headLinks_css.jsp" %>
 
@@ -92,9 +92,9 @@
                                 </c:if>
                                 <c:if test="${listUsr != null || listUsr != ''}">
                                     <c:forEach items="${listUsr}" var="usr">
-                                        
+
                                         <tr <c:if test="${usr.bloq == 'true'}">class="bloq"</c:if>>
-                                            <td class="center">
+                                                <td class="center">
                                                 <c:forEach items="${lstTipo}" var="tipo">
                                                     <c:if test="${tipo.id == usr.tipo_id}">
                                                         ${tipo.tipo_user}
@@ -112,45 +112,32 @@
                                                 </c:if> 
                                             </td>
                                             <td class="list-button small">                                                
-                                                <c:if test="${Usuario.tipo_id == 1}">
-                                                    <c:if test="${usr.bloq == 'true'}">
-                                                        <a href="/usrPass?operacao=restalCadUser&codigo=${usr.id_user}&user=${Usuario.id_user}" class="Recuperar button-gray bt-img restal" title="Recuperar">
-                                                            <span></span>
-                                                        </a>
-                                                        <a href="/usrPass?operacao=delCadUser&codigo=${usr.id_user}&user=${Usuario.id_user}" class="Deletar button-gray bt-img del" title="Deletar">
-                                                            <span></span>
-                                                        </a>
+                                                <c:if test="${Usuario.tipo_id == 1 || Usuario.tipo_id == 2 && Usuario.superUsr == 'true'}">
+                                                    <c:if test="${Usuario.tipo_id == 2 && usr.tipo_id == 1}">
+                                                        ...
                                                     </c:if>
-                                                    <c:if test="${usr.bloq == 'false'}">
-                                                        <a href="/usrPass?operacao=editCadUser&codigo=${usr.id_user}&user=${Usuario.id_user}" class="alterar button-gray bt-img edit" title="Editar">
-                                                            <span></span>
-                                                        </a>
-                                                        <a href="/usrPass?operacao=bloqCadUser&codigo=${usr.id_user}&user=${Usuario.id_user}" class="bloquear button-gray bt-img bloq" title="Bloquear">
-                                                            <span></span>
-                                                        </a>
-                                                    </c:if> 
+                                                    <c:if test="${Usuario.tipo_id == 2 && usr.tipo_id != 1 || Usuario.tipo_id == 1}">
+                                                        <c:if test="${usr.bloq == 'true'}">
+                                                            <a href="/usrPass?operacao=restalCadUser&codigo=${usr.id_user}&user=${Usuario.id_user}" class="Recuperar button-gray bt-img restal" title="Recuperar">
+                                                                <span></span>
+                                                            </a>
+                                                            <a href="/usrPass?operacao=delCadUser&codigo=${usr.id_user}&user=${Usuario.id_user}" class="Deletar button-gray bt-img del" title="Deletar">
+                                                                <span></span>
+                                                            </a>
+                                                        </c:if>
+                                                        <c:if test="${usr.bloq == 'false'}">
+                                                            <a href="/usrPass?operacao=editCadUser&codigo=${usr.id_user}&user=${Usuario.id_user}" class="alterar button-gray bt-img edit" title="Editar">
+                                                                <span></span>
+                                                            </a>
+                                                            <a href="/usrPass?operacao=bloqCadUser&codigo=${usr.id_user}&user=${Usuario.id_user}" class="bloquear button-gray bt-img bloq" title="Bloquear">
+                                                                <span></span>
+                                                            </a>
+                                                        </c:if> 
+                                                    </c:if>                                                    
                                                 </c:if>
-                                                <c:if test="${usr.tipo_id == 1}">
+                                                <c:if test="${Usuario.tipo_id == 2 && Usuario.superUsr == 'false'}">
                                                     ...
-                                                </c:if>
-                                                <c:if test="${usr.tipo_id != 1}">
-                                                    <c:if test="${usr.bloq == 'true'}">
-                                                        <a href="/usrPass?operacao=restalCadUser&codigo=${usr.id_user}&user=${Usuario.id_user}" class="Recuperar button-gray bt-img restal" title="Recuperar">
-                                                            <span></span>
-                                                        </a>
-                                                        <a href="/usrPass?operacao=delCadUser&codigo=${usr.id_user}&user=${Usuario.id_user}" class="Deletar button-gray bt-img del" title="Deletar">
-                                                            <span></span>
-                                                        </a>
-                                                    </c:if>
-                                                    <c:if test="${usr.bloq == 'false'}">
-                                                        <a href="/usrPass?operacao=editCadUser&codigo=${usr.id_user}&user=${Usuario.id_user}" class="alterar button-gray bt-img edit" title="Editar">
-                                                            <span></span>
-                                                        </a>
-                                                        <a href="/usrPass?operacao=bloqCadUser&codigo=${usr.id_user}&user=${Usuario.id_user}" class="bloquear button-gray bt-img bloq" title="Bloquear">
-                                                            <span></span>
-                                                        </a>
-                                                    </c:if> 
-                                                </c:if>
+                                                </c:if>                                                
                                             </td>
                                         </tr>                                      
                                     </c:forEach>

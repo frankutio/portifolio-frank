@@ -67,7 +67,7 @@ public class LoginDAO {
         usuario.setFoto(rs.getString("foto"));
         usuario.setAbout(rs.getString("about"));
         usuario.setData_nascimento(rs.getDate("data_nascimento"));
-        usuario.setSuper(rs.getString("super"));
+        usuario.setSuperUsr(rs.getString("super"));
 
         return usuario;
 

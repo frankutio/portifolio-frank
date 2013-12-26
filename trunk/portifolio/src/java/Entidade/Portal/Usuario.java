@@ -20,7 +20,7 @@ public class Usuario {
     private Date data_nascimento;
     private String dataNascimento;
     private String bloq;
-    private String Super;
+    private String superUsr;
 
     public String validaDados(int tipoDeValidacao) {
 
@@ -210,14 +210,14 @@ public class Usuario {
     /**
      * @return the Super
      */
-    public String getSuper() {
-        return Super;
+    public String getSuperUsr() {
+        return superUsr;
     }
 
     /**
-     * @param Super the Super to set
+     * @param superUsr the Super to set
      */
-    public void setSuper(String Super) {
-        this.Super = Super;
+    public void setSuperUsr(String superUsr) {
+        this.superUsr = superUsr;
     }
 }

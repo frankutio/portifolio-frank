@@ -58,7 +58,7 @@
                             <dl>
                                 <dt><label for="tipo">Tipo</label></dt>
                                 <dd>
-                                    <select id="tipo" name="tipo">
+                                    <select id="tipo" name="tipo" <c:if test="${Usuario.tipo_id == 2 && title == 'Editar'}">disabled</c:if>>
                                         <option value="0"></option>
                                         <c:forEach items="${lstTipo}" var="lstTipo">
                                         <option value="${lstTipo.id}"
@@ -83,7 +83,7 @@
                                 <dd><input type="text" name="name" id="nome" value="${usr.nome}" /></dd>
                                 <dt><label for="login">Login</label></dt>
                                 <dd>
-                                    <input type="text" name="login" id="login" value="${usr.login}" />
+                                    <input type="text" name="login" id="login" value="${usr.login}" <c:if test="${Usuario.tipo_id == 2 || title == 'Editar'}">disabled</c:if> />
                                     <c:if test="${msgErroLogin != null || msgErroLogin != ''}">
                                         <div>${msgErroLogin}</div>
                                     </c:if>
@@ -126,11 +126,11 @@
                                     
                                     
         <script type="text/javascript">
-            <c:if  test="${usr.Super == 'true'}">
+            <c:if  test="${usr.superUsr == 'true'}">
                 $("#sim").attr("checked",true);
                 $("#nao").attr("checked",false);
             </c:if>
-            <c:if  test="${usr.Super != 'true'}">
+            <c:if  test="${usr.superUsr == 'false'}">
                 $("#sim").attr("checked",false);
                 $("#nao").attr("checked",true);
             </c:if>
