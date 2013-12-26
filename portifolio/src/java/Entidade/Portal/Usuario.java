@@ -20,6 +20,7 @@ public class Usuario {
     private Date data_nascimento;
     private String dataNascimento;
     private String bloq;
+    private String Super;
 
     public String validaDados(int tipoDeValidacao) {
 
@@ -204,5 +205,19 @@ public class Usuario {
      */
     public void setBloq(String bloq) {
         this.bloq = bloq;
+    }
+
+    /**
+     * @return the Super
+     */
+    public String getSuper() {
+        return Super;
+    }
+
+    /**
+     * @param Super the Super to set
+     */
+    public void setSuper(String Super) {
+        this.Super = Super;
     }
 }

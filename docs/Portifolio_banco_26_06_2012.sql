@@ -134,7 +134,7 @@ CREATE TABLE `usuario` (
   `foto` varchar(200) DEFAULT NULL,
   `about` varchar(336) DEFAULT NULL,
   `data_nascimento` date DEFAULT NULL,
-  `lixo` enum('true','false') DEFAULT NULL,
+  `bloq` enum('true','false') DEFAULT NULL,
   PRIMARY KEY (`id_user`),
   KEY `Usuario_FKIndex1` (`Tipo_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -144,7 +144,7 @@ CREATE TABLE `usuario` (
 --
 
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` (`id_user`,`Tipo_id`,`login`,`nome`,`senha`,`email`,`foto`,`about`,`data_nascimento`,`lixo`) VALUES 
+INSERT INTO `usuario` (`id_user`,`Tipo_id`,`login`,`nome`,`senha`,`email`,`foto`,`about`,`data_nascimento`,`bloq`) VALUES 
  (1,1,'frankutio','Frank Bezerra Simião','fb007032','frankutio@gmail.com',NULL,NULL,'1984-01-30','false');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 

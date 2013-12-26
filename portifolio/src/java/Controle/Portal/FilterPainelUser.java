@@ -29,7 +29,7 @@ public class FilterPainelUser implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
 
         try {
-            if (httpRequest.getSession().getAttribute("tipoUser") == null) {
+            if (httpRequest.getSession().getAttribute("tipoUser") == null && httpRequest.getSession().getAttribute("superUser") == null) {
                 httpRequest.setAttribute("MsgErro", "<div class='msg-erro'>Acão não permitida</div>");
                 httpRequest.getRequestDispatcher("/portifolio?nav=painel").forward(request, response);
             }

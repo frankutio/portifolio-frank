@@ -5,7 +5,7 @@
             <li class="menu-head">
                 <span class="menu-head-item drop">Perfil</span>
                 <ul>
-                    <li><a href="/portifolio?nav=painel">Home</a></li>
+                    <li><a href="/usrPass?operacao=homePainel">Home</a></li>
                     <li>
                         <span>Dados cadastrais</span>
                         <ul>
