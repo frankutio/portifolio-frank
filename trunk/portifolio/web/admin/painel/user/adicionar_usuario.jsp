@@ -53,6 +53,8 @@
                     <div class="box-content">
                         <form name="profile" action="/usrPass" method="post" id="form-dados-pessoais">
                             <input type="hidden" name="operacao" value="${operacao}" />
+                            <input type="hidden" name="usr" value="${usr.id_user}" />
+                            
                             <dl>
                                 <dt><label for="tipo">Tipo</label></dt>
                                 <dd>
@@ -67,6 +69,14 @@
                                     </select>
                                     <c:if test="${msgErroTipo != null || msgErroTipo != ''}">
                                         <div>${msgErroTipo}</div>
+                                    </c:if>
+                                </dd>
+                                <dt><label for="tipo">Super Poderes?</label></dt>
+                                <dd>
+                                    <label for="sim"><input id="sim" type="radio" name="super" value="sim" /> Sim</label> 
+                                    <label for="nao"><input id="nao" type="radio" name="super" value="nao" /> Não</label>
+                                    <c:if test="${msgErroSuper != null || msgErroSuper != ''}">
+                                        <div>${msgErroSuper}</div>
                                     </c:if>
                                 </dd>
                                 <dt><label for="nome">Nome</label></dt>
@@ -113,6 +123,18 @@
 
             </div>
         </div>
+                                    
+                                    
+        <script type="text/javascript">
+            <c:if  test="${usr.Super == 'true'}">
+                $("#sim").attr("checked",true);
+                $("#nao").attr("checked",false);
+            </c:if>
+            <c:if  test="${usr.Super != 'true'}">
+                $("#sim").attr("checked",false);
+                $("#nao").attr("checked",true);
+            </c:if>
+        </script>
 
         <%@ include file="/partials/footer.jsp" %>
 

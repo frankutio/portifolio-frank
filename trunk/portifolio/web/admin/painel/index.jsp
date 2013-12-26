@@ -156,13 +156,24 @@
                                         </div>
                                     </th>
                                 </tr>
-                                <tr>
-                                    <td colspan="2" class="msg-table empty">
-                                        <div class="center">
-                                            <h5 class="font-normal">Não existem usuários cadastrados</h5>
-                                        </div>
-                                    </td>
-                                </tr>
+                                <c:if test="${listUsr == null || listUsr == ''}">
+                                    <tr>
+                                        <td colspan="2" class="msg-table empty">
+                                            <div class="center">
+                                                <h5 class="font-normal">Não existem usuários cadastrados</h5>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </c:if>
+                                <c:if test="${listUsr != null || listUsr != ''}">
+                                    <c:forEach items="${listUsr}" var="usr">
+                                        
+                                        <tr <c:if test="${usr.bloq == 'true'}">class="bloq"</c:if>>
+                                            <td class="center">${usr.login}</td>
+                                            <td>${usr.nome}</td>      
+                                        </tr>                                      
+                                    </c:forEach>
+                                </c:if>
                             </table>
                         </div>
                     </div>

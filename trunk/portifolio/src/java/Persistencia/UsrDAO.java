@@ -29,7 +29,7 @@ public class UsrDAO {
             try {
                 pstmt = conn.prepareStatement(
                         "INSERT INTO Usuario " +
-                        "(tipo_id,login,nome,senha,email,data_nascimento,bloq)" +
+                        "(tipo_id,login,nome,senha,email,data_nascimento,bloq,super)" +
                         " VALUES (?, ?, ?, ?, ?, ?, ?)");
                 pstmt.setInt(1, usr.getTipo_id());
                 pstmt.setString(2, usr.getLogin());
@@ -43,6 +43,7 @@ public class UsrDAO {
                     pstmt.setDate(6, null);
                 }
                 pstmt.setString(7, usr.getBloq());
+                pstmt.setString(8, usr.getSuper());
 
                 n = pstmt.executeUpdate();
             } catch (SQLException e) {
@@ -135,6 +136,7 @@ public class UsrDAO {
                     usr.setEmail(rs.getString("email"));
                     usr.setData_nascimento(rs.getDate("data_nascimento"));
                     usr.setBloq(rs.getString("bloq"));
+                    usr.setSuper(rs.getString("super"));
 
                     lstUsers.add(usr);
                 }
@@ -523,8 +525,55 @@ public class UsrDAO {
         usuario.setAbout(rs.getString("about"));
         usuario.setData_nascimento(rs.getDate("data_nascimento"));
         usuario.setBloq(rs.getString("bloq"));
+        usuario.setSuper(rs.getString("super"));
 
         return usuario;
+
+    }
+    
+    // Altera os dados pessoais por meio de um acesso administrador    
+    public int alteraCadastro(Usuario usr, int id) {
+
+        int n = 0;
+        Connection conn = Conexao.getInstance().criaConexao();
+
+        if (conn != null) {
+            PreparedStatement pstmt = null;
+            try {
+                pstmt = conn.prepareStatement(
+                        "UPDATE usuario SET " +
+                        "tipo_id = ?, nome = ?, senha = ?, email = ?, data_nascimento = ?, super = ?" +
+                        " WHERE id_user = " + id);
+                pstmt.setInt(1, usr.getTipo_id());
+                pstmt.setString(2, usr.getNome());
+                pstmt.setString(3, usr.getSenha());
+                pstmt.setString(4, usr.getEmail());
+                pstmt.setDate(5, new java.sql.Date(usr.getData_nascimento().getTime()));
+                pstmt.setString(6, usr.getSuper());
+
+                n = pstmt.executeUpdate();
+                
+                
+            } catch (SQLException e) {
+                System.out.println("Atualização Falhou!!!\n" + e.getMessage());
+                
+                n = 0;
+                
+            } finally {
+                try {
+                    if (pstmt != null) {
+                        pstmt.close();
+                    }
+                    if (conn != null) {
+                        conn.close();
+                    }
+                } catch (SQLException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+
+        return n;
 
     }
     

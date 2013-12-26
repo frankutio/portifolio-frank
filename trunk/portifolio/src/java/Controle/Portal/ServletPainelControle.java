@@ -59,8 +59,9 @@ public class ServletPainelControle extends HttpServlet {
                 proximaPagina = direciona;
             } else {
                 
-                if(usuario.getTipo_id() != 1){
+                if(usuario.getTipo_id() != 1 && usuario.getSuper().equals("false")){
                     request.getSession().setAttribute("tipoUser", null);
+                    request.getSession().setAttribute("superUser", null);
                 }
                 
                 else{
@@ -68,8 +69,8 @@ public class ServletPainelControle extends HttpServlet {
                 }
 
                 request.getSession().setAttribute("pass-login", "logado");
-                request.getSession().setAttribute("Usuario", usuario); 
-
+                request.getSession().setAttribute("Usuario", usuario);
+                
                 proximaPagina = "/usrPass?operacao=homePainel";
             }
 
@@ -91,6 +92,7 @@ public class ServletPainelControle extends HttpServlet {
             String msgErroTipo = "";
             String msgErroData = "";
             String msgErroNome = "";
+            String msgErroSuper = "";
             
             // Recuperando dados do formulario
             
@@ -100,7 +102,8 @@ public class ServletPainelControle extends HttpServlet {
             String login = request.getParameter("login"); 
             String senha = request.getParameter("senha"); 
             String confSenha = request.getParameter("confSenha"); 
-            String data = request.getParameter("dat_nascimento");      
+            String data = request.getParameter("dat_nascimento"); 
+            String superUsr = request.getParameter("super");
             
             // carrega a lista de tipos
             
@@ -128,6 +131,10 @@ public class ServletPainelControle extends HttpServlet {
                     
                     if(senha.equals("")){
                         msgErroSenha = "<span class='erro'>Preencha o campo de senha</span>";
+                    }
+                    
+                    if(superUsr.equals("")){
+                        msgErroSuper = "<span class='erro'>Informe se é um super usuário</span>";
                     }
                     
                     if(data.equals("")){
@@ -172,6 +179,7 @@ public class ServletPainelControle extends HttpServlet {
                     formUsr.setEmail(email);
                     formUsr.setLogin(login);
                     formUsr.setSenha(senha);
+                    formUsr.setSuper(superUsr);
                     
                     // Mensagem de erro e proxima pagina
                     String msgErro = formUsr.validaDados(formUsr.INCLUSAO);
@@ -187,6 +195,7 @@ public class ServletPainelControle extends HttpServlet {
                         usr.setEmail(formUsr.getEmail());
                         usr.setLogin(formUsr.getLogin());
                         usr.setSenha(formUsr.getSenha());
+                        usr.setSuper(formUsr.getSuper());
                         // Testa se a data de nascimento foi preenchida
                         if(data.equals("")){
                             usr.setData_nascimento(null);
@@ -315,7 +324,7 @@ public class ServletPainelControle extends HttpServlet {
                         request.setAttribute("msg", "<div class='msg_success'>Dados alterados com sucesso</div>");
                         request.getSession().setAttribute("Usuario", usuario);
 
-                        proximaPagina = "/portifolio?nav=painel";
+                        proximaPagina = "/usrPass?operacao=homePainel";
 
                     }else {
                         
@@ -335,10 +344,143 @@ public class ServletPainelControle extends HttpServlet {
 
         } 
         
+        else if (operacao.equals("edit_usuario")){
+
+            //COVNERTE DATA
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+            // ISNTANCIA A CLASSE - Obtem dados do formulario
+            Usuario formUsr = new Usuario();
+
+            String msgErroEmail = "";
+            String msgErroSenha = "";
+            String msgErroTipo = "";
+            String msgErroData = "";
+            String msgErroNome = "";
+            String msgErroSuper = "";
+            
+            // Recuperando dados do formulario           
+            
+            int idUser = Integer.parseInt(request.getParameter("usr")); 
+            String tipo = request.getParameter("tipo");
+            String nome = request.getParameter("name"); 
+            String email = request.getParameter("email"); 
+            String senha = request.getParameter("senha"); 
+            String confSenha = request.getParameter("confSenha"); 
+            String data = request.getParameter("dat_nascimento");  
+            String superUsr = request.getParameter("super");
+                                
+            
+                //RECUPERA PARAMENTRO DESCRICAO
+                try{
+                    
+                    if(tipo.equals("") || tipo.equals("0")){
+                        msgErroTipo = "<span class='erro'>Escolha o tipo de usuário</span>";
+                    }
+                    
+                    if(nome.equals("")){
+                        msgErroNome = "<span class='erro'>Preencha o nome</span>";
+                    }
+                    
+                    if(email.equals("")){
+                        msgErroEmail = "<span class='erro'>Preencha o campo de e-mail</span>";
+                    }
+                    
+                    if(senha.equals("")){
+                        msgErroSenha = "<span class='erro'>Preencha o campo de senha</span>";
+                    }
+                    
+                    if(superUsr.equals("")){
+                        msgErroSuper = "<span class='erro'>Informe se é um super usuário</span>";
+                    }
+                    
+                    if(data.equals("")){
+                        msgErroData = "";
+                        formUsr.setData_nascimento(null);
+                    }
+                    
+                    // testando as senhas
+                    
+                    String pwd = senha;
+                    String pwd2 = confSenha;
+                    
+                    if(pwd !=""){
+                        if(pwd.equals(pwd2)){
+                            senha = pwd;
+                        }
+                        else{
+                            msgErroSenha = "<span class='erro'>As senhas não conferem</span>";
+                        }
+                    }                  
+                                      
+                                       
+                    // Gravando os dados no objeto para leitura em caso de erro
+                    
+                    formUsr.setId_user(idUser);
+                    formUsr.setTipo_id(Integer.parseInt(tipo));
+                    formUsr.setNome(nome);
+                    formUsr.setEmail(email);
+                    formUsr.setSenha(senha);
+                    formUsr.setSuper(superUsr);
+                    
+                    // Mensagem de erro e proxima pagina
+                    String msgErro = formUsr.validaDados(formUsr.ALTERACAO);
+
+                    // Monta Usuario com dados validos ou monta mensagens de erro
+
+                    if (msgErro.equals("") && msgErroEmail.equals("") && msgErroSenha.equals("") && msgErroTipo.equals("") && msgErroData.equals("")) {
+
+                        Usuario usr = new Usuario();
+
+                        usr.setId_user(formUsr.getId_user());
+                        usr.setTipo_id(formUsr.getTipo_id());
+                        usr.setNome(formUsr.getNome());
+                        usr.setEmail(formUsr.getEmail());
+                        usr.setSenha(formUsr.getSenha());
+                        usr.setSuper(formUsr.getSuper());
+                        // Testa se a data de nascimento foi preenchida
+                        if(data.equals("")){
+                            usr.setData_nascimento(null);
+                        }
+                        else{
+                            Date dtnascimento = dateFormat.parse(data);
+                            usr.setData_nascimento(dtnascimento);
+                        }
+
+                        //EFETUA A GRAVACAO DOS DADOS
+                        UsrDAO.getInstance().alteraCadastro(usr, usr.getId_user());
+
+                        request.setAttribute("msg", "<div class='msg_success'>Usuario alterado com sucesso</div>");
+
+                        proximaPagina = "/usrPass?operacao=homePainel";
+
+                    }else {
+                        
+                        request.setAttribute("title", "Editar");
+                        request.setAttribute("operacao", "edit_usuario");
+
+                        request.setAttribute("msgErro", msgErro);
+                        request.setAttribute("msgErroEmail", msgErroEmail);                  
+                        request.setAttribute("msgErroSenha", msgErroSenha);                    
+                        request.setAttribute("msgErroTipo", msgErroTipo);                    
+                        request.setAttribute("msgErroData", msgErroData);
+                        request.setAttribute("usr", formUsr);  
+
+                        proximaPagina = "/admin/painel/user/adicionar_usuario.jsp";
+                    }
+                    
+                }catch(ParseException e){
+                    
+                    System.out.println(e);
+
+                }               
+
+        } 
+        
         
         else if (operacao.equals("editCadUser")) {
             
-            String redirect ="/portifolio?nav=painel";
+            String redirect ="/usrPass?operacao=homePainel";
             
             int id = Integer.parseInt(request.getParameter("codigo"));
             int idUser = Integer.parseInt(request.getParameter("user"));           
@@ -351,7 +493,7 @@ public class ServletPainelControle extends HttpServlet {
             
             Usuario usr = UsrDAO.getInstance().carregaDados(idUser);
             
-            if(usuario == null || usuario.getId_user() == idUser || usr.getTipo_id() != 1){
+            if(usuario == null || usuario.getId_user() == idUser || usr.getSuper().equals("false") && usr.getTipo_id() != 1){
                 
                 request.setAttribute("msg", "<div class='msg_erro'>Usuário não encontrado</div>");
                 redirect = "/portifolio?nav=cmsUser&action=adm_usuario&user=" + idUser;
@@ -404,7 +546,7 @@ public class ServletPainelControle extends HttpServlet {
                 
                 request.setAttribute("msg", "<div class='msg_success'>Senha alterada com sucesso</div>");
                 
-                proximaPagina = "/portifolio?nav=painel";
+                proximaPagina = "/usrPass?operacao=homePainel";
                 
             }
             
@@ -570,6 +712,14 @@ public class ServletPainelControle extends HttpServlet {
         } 
         
         else if (operacao.equals("homePainel")) {
+            
+            int id = Integer.parseInt("0");
+            List<Tipo> lstTipo = UsrDAO.getInstance().leTipo();            
+            List<Usuario> listUsr = UsrDAO.getInstance().leTodos(id);
+            
+            request.setAttribute("listUsr", listUsr);
+            request.setAttribute("lstTipo", lstTipo);
+            
             proximaPagina = "/portifolio?nav=painel";
         }
 
