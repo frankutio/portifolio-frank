@@ -41,7 +41,8 @@ public class ServletPainelControle extends HttpServlet {
         //LOG PARA TESTE
         System.out.println("Controle Acionado com Operacao: " + operacao);
 
-        String proximaPagina = "";
+        String proximaPagina = "";       
+        
 
         if (operacao.equals("login")) {
 
@@ -589,16 +590,26 @@ public class ServletPainelControle extends HttpServlet {
         }
         
         else if (operacao.equals("bloqCadUser")) {
+                
+            String redirect ="";
             
             int id = Integer.parseInt(request.getParameter("codigo"));
             int idUser = Integer.parseInt(request.getParameter("user"));
+            
+            // Carrega os dados do usuário logado no sistema            
+             Usuario usuarioLogado = (Usuario) httpRequest.getSession().getAttribute("Usuario");
+             
+            // Carregando dados do usuario
+            
+            Usuario usuario = UsrDAO.getInstance().carregaDados(id);
             
             // Verifica se o usuario tem permissao para realizar essa ação
             
             Usuario usr = UsrDAO.getInstance().carregaDados(idUser);
             
-            if(usr.getTipo_id() != 1 || usr.getId_user() == id){
+            if(usuario == null || usuario.getId_user() == idUser || usr.getSuperUsr() == null && usr.getTipo_id() != 1 || usr.getTipo_id() == 2 && usuario.getTipo_id() == 1 || usuarioLogado.getTipo_id() != 1 && usuarioLogado.getSuperUsr().equals("false")){
                 request.setAttribute("msg", "<div class='msg_erro'>Ação não permitida</div>");
+                redirect = "/portifolio?nav=cmsUser&action=adm_usuario&user=" + idUser;
             }
             
             else{
@@ -614,24 +625,36 @@ public class ServletPainelControle extends HttpServlet {
                 else{
                     request.setAttribute("msg", "<div class='msg_erro'>O bloqueio falhou</div>");
                 }
+                
+                redirect = "/portifolio?nav=cmsUser&action=adm_usuario&user=" + idUser;
             
             }
             
 
-            proximaPagina = "/portifolio?nav=cmsUser&action=adm_usuario&user=" + idUser;
+            proximaPagina = redirect;
         } 
         
         else if (operacao.equals("restalCadUser")) {
             
+            String redirect ="";
+            
             int id = Integer.parseInt(request.getParameter("codigo"));
             int idUser = Integer.parseInt(request.getParameter("user"));
+            
+            // Carrega os dados do usuário logado no sistema            
+             Usuario usuarioLogado = (Usuario) httpRequest.getSession().getAttribute("Usuario");
+                
+            // Carregando dados do usuario
+            
+            Usuario usuario = UsrDAO.getInstance().leDados(id);
             
             // Verifica se o usuario tem permissao para realizar essa ação
             
             Usuario usr = UsrDAO.getInstance().carregaDados(idUser);
             
-            if(usr.getTipo_id() != 1 || usr.getId_user() == id){
+            if(usuario == null || usuario.getId_user() == idUser || usr.getSuperUsr() == null && usr.getTipo_id() != 1 || usr.getTipo_id() == 2 && usuario.getTipo_id() == 1 || usuarioLogado.getTipo_id() != 1 && usuarioLogado.getSuperUsr().equals("false")){
                 request.setAttribute("msg", "<div class='msg_erro'>Ação não permitida</div>");
+                redirect = "/portifolio?nav=cmsUser&action=adm_usuario&user=" + idUser;
             }
             
             else{
@@ -647,11 +670,13 @@ public class ServletPainelControle extends HttpServlet {
                 else{
                     request.setAttribute("msg", "<div class='msg_erro'>A restauração falhou</div>");
                 }
+                
+                redirect = "/portifolio?nav=cmsUser&action=adm_usuario&user=" + idUser;
             
             }
             
 
-            proximaPagina = "/portifolio?nav=cmsUser&action=adm_usuario&user=" + idUser;
+            proximaPagina = redirect;
         } 
         
         
@@ -660,10 +685,8 @@ public class ServletPainelControle extends HttpServlet {
             int id = Integer.parseInt(request.getParameter("codigo"));
             int idUser = Integer.parseInt(request.getParameter("user"));
             
-            
-            // Verifica se o usuario tem permissao para realizar essa ação
-            
-            Usuario usr = UsrDAO.getInstance().carregaDados(idUser);
+            // Carrega os dados do usuário logado no sistema            
+             Usuario usr = (Usuario) httpRequest.getSession().getAttribute("Usuario");
             
             // Verifica se o usuario está bloqueado antes da exclusão
             
