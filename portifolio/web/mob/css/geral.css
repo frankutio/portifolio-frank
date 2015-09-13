@@ -646,7 +646,7 @@ body._actived-menu{
     color: rgb(155, 155, 155);
     padding-left: 10px;
     text-shadow: 0 1px 0 rgba(0, 0, 0, .6);
-    margin: 0 -5px 0-5px;
+    margin: 0 -5px 0 -5px;
     background: #5D5D5D;
     padding: 3px 0 3px 2px;
     background-image: -webkit-gradient(linear, left top, left bottom, from( #5D5D5D), to( #4E4E4E)); /* Saf4+, Chrome */
