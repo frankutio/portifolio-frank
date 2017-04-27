@@ -108,7 +108,7 @@
                                                     <span class="active">Ativo</span>
                                                 </c:if> 
                                                 <c:if test="${usr.bloq == 'true'}">
-                                                    <span class="inactive">bloqueado</span>
+                                                    <span class="inactive">Bloqueado</span>
                                                 </c:if> 
                                             </td>
                                             <td class="list-button small">                                                

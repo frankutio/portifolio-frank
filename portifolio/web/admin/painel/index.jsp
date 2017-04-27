@@ -155,10 +155,15 @@
                                             <h5>Nome</h5>
                                         </div>
                                     </th>
+                                    <th class="center date">
+                                        <div>
+                                            <h5>Tipo</h5>
+                                        </div>
+                                    </th>
                                 </tr>
                                 <c:if test="${listUsr == null || listUsr == ''}">
                                     <tr>
-                                        <td colspan="2" class="msg-table empty">
+                                        <td colspan="3" class="msg-table empty">
                                             <div class="center">
                                                 <h5 class="font-normal">Não existem usuários cadastrados</h5>
                                             </div>
@@ -170,7 +175,14 @@
                                         
                                         <tr <c:if test="${usr.bloq == 'true'}">class="bloq"</c:if>>
                                             <td class="center">${usr.login}</td>
-                                            <td>${usr.nome}</td>      
+                                            <td>${usr.nome}</td>
+                                            <td class="center">
+                                                <c:forEach items="${lstTipo}" var="tipo">
+                                                    <c:if test="${tipo.id == usr.tipo_id}">
+                                                        ${tipo.tipo_user}
+                                                    </c:if>
+                                                </c:forEach>
+                                            </td>
                                         </tr>                                      
                                     </c:forEach>
                                 </c:if>
