@@ -30,7 +30,7 @@ public class UsrDAO {
                 pstmt = conn.prepareStatement(
                         "INSERT INTO Usuario " +
                         "(tipo_id,login,nome,senha,email,data_nascimento,bloq,super)" +
-                        " VALUES (?, ?, ?, ?, ?, ?, ?)");
+                        " VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
                 pstmt.setInt(1, usr.getTipo_id());
                 pstmt.setString(2, usr.getLogin());
                 pstmt.setString(3, usr.getNome());
