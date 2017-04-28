@@ -43,6 +43,10 @@ public class Usuario {
             if (getEmail() == null || getEmail().equals("")) {
                 msgErro += "Informe o e-mail.<br />";
             }
+            
+            if (getSuperUsr() == null || getSuperUsr().equals("")){             
+                msgErro += "Informe se é Super Usuário. <br />";
+            }
 
         }
 

@@ -142,8 +142,9 @@ public class ServletPainelControle extends HttpServlet {
                         msgErroSenha = "<span class='erro'>Preencha o campo de senha</span>";
                     }
                     
-                    if(superUsr.equals("")){
+                    if(superUsr == null){
                         msgErroSuper = "<span class='erro'>Informe se é um super usuário</span>";
+                        superUsr = "";
                     }
                     
                     if(data.equals("")){
@@ -244,6 +245,7 @@ public class ServletPainelControle extends HttpServlet {
                         request.setAttribute("msgErroSenha", msgErroSenha);                    
                         request.setAttribute("msgErroTipo", msgErroTipo);                    
                         request.setAttribute("msgErroData", msgErroData);
+                        request.setAttribute("msgErroSuper", msgErroSuper);
                         request.setAttribute("lstTipo", lstTipo);
                         request.setAttribute("usr", formUsr);  
 

@@ -204,7 +204,7 @@ div.foto {
 }
 
 .about-usr p{
-    display: contents;
+    display: inline;
 }
 
 .about-usr-null{
