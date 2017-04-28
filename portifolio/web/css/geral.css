@@ -202,3 +202,15 @@ div.foto {
     margin: 0 1em 0 0;
     position: relative;
 }
+
+.about-usr p{
+    display: contents;
+}
+
+.about-usr-null{
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    background-color: #C0E5C5;
+    padding: 10px;
+}

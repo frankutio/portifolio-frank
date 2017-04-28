@@ -83,10 +83,18 @@ public class UsrDAO {
                 pstmt.setString(1, usr.getNome());
                 pstmt.setString(2, usr.getEmail());
                 pstmt.setDate(3, new java.sql.Date(usr.getData_nascimento().getTime()));
-                pstmt.setString(4, usr.getAbout());
-
-                n = pstmt.executeUpdate();
                 
+                if(usr.getAbout().equals("")){
+                    pstmt.setString(4, null);
+                }
+                
+                else{
+                    pstmt.setString(4, usr.getAbout());
+                }              
+                
+
+                n = pstmt.executeUpdate();                
+                               
                 
             } catch (SQLException e) {
                 System.out.println("Inclusao Falhou!!!\n" + e.getMessage());

@@ -74,7 +74,12 @@
                     </div>
 
                     <div class="menu-gear">
-                        <h4>&quot; Meu nome é <strong>Frank Bezerra</strong>, sou <strong>Desenvolvedor de interfaces Web</strong> no portal <span class="underline">Medicando</span>, especializado em Design-web, crio interfaces e templates para portais seguindo os padrões de web standards e acessibilidade. &quot;</h4>
+                        <c:if test="${Usuario.about != null}">
+                            <h4 class="about-usr">&quot; ${Usuario.about} &quot;</h4>
+                        </c:if>
+                        <c:if test="${Usuario.about == null}">
+                            <h3 class="about-usr-null">Que tal falar um pouco sobre você??</h3>
+                        </c:if>
                     </div>
 
                     <div class="band-title-gear">
