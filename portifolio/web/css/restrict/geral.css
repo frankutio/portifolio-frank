@@ -85,7 +85,7 @@ div.collumn-inside-center, div.collumn-inside-center-full{
 div.band-title-gear {
     background: url("/img/sprite_icon_global.png") no-repeat 6px -46px #E2E2E2;
     color: #474747;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: bold;
     margin-top: 20px;
     margin-bottom: 10px;
@@ -99,6 +99,7 @@ div.band-title-gear {
 div.band-title-gear span {
     display: block;
     background: #E2E2E2;
+    padding: 0px 0px 4px 0px;
 }
 
 .menu-gear h4{
