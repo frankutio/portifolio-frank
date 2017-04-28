@@ -80,7 +80,12 @@
                                     </c:if>
                                 </dd>
                                 <dt><label for="nome">Nome</label></dt>
-                                <dd><input type="text" name="name" id="nome" value="${usr.nome}" /></dd>
+                                <dd>
+                                    <input type="text" name="name" id="nome" value="${usr.nome}" />
+                                    <c:if test="${msgErroNome != null || msgErroNome != ''}">
+                                        <div>${msgErroNome}</div>
+                                    </c:if>
+                                </dd>
                                 <dt><label for="login">Login</label></dt>
                                 <dd>
                                     <input type="text" name="login" id="login" value="${usr.login}" <c:if test="${Usuario.tipo_id == 2 || title == 'Editar'}">disabled</c:if> />

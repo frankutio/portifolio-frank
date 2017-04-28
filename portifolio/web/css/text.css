@@ -67,3 +67,10 @@ dd{
 .aling-right{
 	text-align: right;
 }
+
+span.erro{
+    color: #e80a0a;
+    padding: 10px 5px 5px 0px;
+    display: inline-table;
+    font-size: 13px;
+}

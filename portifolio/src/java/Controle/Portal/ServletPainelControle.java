@@ -150,6 +150,7 @@ public class ServletPainelControle extends HttpServlet {
                     if(data.equals("")){
                         msgErroData = "";
                         formUsr.setData_nascimento(null);
+                        msgErroData = "<span class='erro'>Informe a data de nascimento</span>";
                     }
                     
                     // prepara o super usuario para gravar a sua permissão no banco
@@ -241,6 +242,7 @@ public class ServletPainelControle extends HttpServlet {
 
                         request.setAttribute("msgErro", msgErro);
                         request.setAttribute("msgErroEmail", msgErroEmail);
+                        request.setAttribute("msgErroNome", msgErroNome);
                         request.setAttribute("msgErroLogin", msgErroLogin);                    
                         request.setAttribute("msgErroSenha", msgErroSenha);                    
                         request.setAttribute("msgErroTipo", msgErroTipo);                    
