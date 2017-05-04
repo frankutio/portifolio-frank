@@ -74,3 +74,19 @@ span.erro{
     display: inline-table;
     font-size: 13px;
 }
+
+.msg_success{
+    background-color: rgb(197, 222, 199);
+    color: rgb(16, 74, 21);
+    padding: 10px;
+    margin: 0px 0px 17px 0px;
+    font-weight: bold;
+}
+
+.msg_erro, .msg-erro{
+    background-color: rgb(222, 197, 197);
+    color: rgb(140, 20, 20);
+    padding: 10px;
+    margin: 0px 0px 17px 0px;
+    font-weight: bold;
+}
