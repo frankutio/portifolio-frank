@@ -785,6 +785,12 @@ public class ServletPainelControle extends HttpServlet {
             
             proximaPagina = "/portifolio?nav=painel";
         }
+        
+        // Redirecionamento de páginas
+        
+        else if(operacao.equals("modal-mudafoto")){
+            proximaPagina = "/admin/painel/teste.jsp";            
+        }
 
         //PARA DIRECIONAR AS PAGINAS PARA O LOCAL CERTO.
         RequestDispatcher rd = request.getRequestDispatcher(proximaPagina);
