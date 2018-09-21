@@ -20,8 +20,8 @@
         <%@ include file="/partials/headLinks_js.jsp" %>
         <%@ include file="/partials/restrict/headLinks_js.jsp" %>
 
-        <script type="text/javascript" src="/js/lib/tiny/tiny_mce.js"></script>
-        <script type="text/javascript" src="/js/lib/tiny/editor-custon.js"></script>        
+        <script type="text/javascript" src="/js/lib/new_tiny/tinymce.min.js"></script>
+        <script type="text/javascript" src="/js/lib/new_tiny/editor-custon.js"></script>        
 
     </head>
 
@@ -91,7 +91,7 @@
                                 </dt>
                                 <dt><label for="about">Sobre mim</label></dt>
                                 <dd>
-                                    <textarea name="about" id="about" class="rich-text-medium">${Usuario.about}</textarea>
+                                    <textarea name="about" id="about" class="rich-text-medium rich-text">${Usuario.about}</textarea>
                                     <span class="count">397</span>
                                 </dd>
                                 <dt></dt>
