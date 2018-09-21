@@ -60,7 +60,7 @@
                                 <img src="${Usuario.foto}" alt="Imagem do usuario" width="125" height="125" />
                             </div> 
                             <div class="slide-bt">
-                                <a href="/admin/painel/teste.jsp" class="show-modal">Alterar foto</a>
+                                <a href="/usrPass?&operacao=modal-mudafoto" class="show-modal">Alterar foto</a>
                             </div>
                         </div>
                     </div> 
