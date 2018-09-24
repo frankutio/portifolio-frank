@@ -480,6 +480,44 @@ public class UsrDAO {
 
     }
     
+    //Altera a foto de um usuário no Banco
+    public int alteraFoto(int id, String foto) {
+
+        int n = 0;
+        Connection conn = Conexao.getInstance().criaConexao();
+
+        if (conn != null) {
+            PreparedStatement pstmt = null;
+            try {
+                pstmt = conn.prepareStatement(
+                        "UPDATE usuario SET " +
+                        "foto = '" + foto + "' WHERE id_user =" + id);
+                
+                n = pstmt.executeUpdate();
+                
+            } catch (SQLException e) {
+                System.out.println("Inclusao da foto Falhou!!!\n" + e.getMessage());
+                n = 0;
+                
+            } finally {
+                try {
+                    if (pstmt != null) {
+                        pstmt.close();
+                    }
+                    if (conn != null) {
+                        conn.close();
+                    }
+                } catch (SQLException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+
+        return n;
+
+    }
+    
+    
     //Deleta um usuário no Banco
     public int delUsr(int id) {
 
