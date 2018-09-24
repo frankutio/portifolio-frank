@@ -8,6 +8,7 @@ public class Image {
     private String alt;
     private String title;
     private String descricao;
+    private String url;
     private int ordem;
 
     /**
@@ -106,5 +107,19 @@ public class Image {
      */
     public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+
+    /**
+     * @return the url
+     */
+    public String getUrl() {
+        return url;
+    }
+
+    /**
+     * @param url the url to set
+     */
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
