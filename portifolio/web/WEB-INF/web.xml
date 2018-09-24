@@ -40,6 +40,10 @@
         <servlet-name>ServletNavigation</servlet-name>
         <servlet-class>Controle.Portal.ServletNavigation</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FilerUpload</servlet-name>
+        <servlet-class>Controle.Portal.FilerUpload</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletPainelControle</servlet-name>
         <url-pattern>/usrPass</url-pattern>
@@ -51,6 +55,10 @@
     <servlet-mapping>
         <servlet-name>ServletNavigation</servlet-name>
         <url-pattern>/portifolio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilerUpload</servlet-name>
+        <url-pattern>/upload</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
