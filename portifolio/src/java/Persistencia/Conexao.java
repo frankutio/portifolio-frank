@@ -17,8 +17,9 @@ public class Conexao {
 
     public Connection criaConexao() {
         
-        String driver = "org.gjt.mm.mysql.Driver";
-        String strConexao = "jdbc:mysql://localhost/portifolio";
+        String driver = "com.mysql.cj.jdbc.Driver";
+        String paransServ = "?useSSL=false&useTimezone=true&serverTimezone=UTC";
+        String strConexao = "jdbc:mysql://localhost/portifolio" + paransServ;
         String usuario = "root";
         String senha = "admin";
 
