@@ -55,14 +55,12 @@
                 <div class="grid_4 inside-collumns">
                     <!-- Foto -->
                     <div class="box-content-photo">
-                        <div class="container-details">
-                            <div class="foto">
-                                <img src="${Usuario.foto}" alt="Imagem do usuario" width="125" height="125" />
-                            </div> 
+                        <div class="foto">
+                            <img src="${Usuario.foto}" alt="Imagem do usuario" />
                             <div class="slide-bt">
                                 <a href="/usrPass?&operacao=modal-mudafoto" class="show-modal">Alterar foto</a>
                             </div>
-                        </div>
+                        </div>                         
                     </div> 
                     <div class="clear"></div>           
                     <!-- Foto -->
