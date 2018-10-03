@@ -789,7 +789,7 @@ public class ServletPainelControle extends HttpServlet {
         // Redirecionamento de páginas
         
         else if(operacao.equals("modal-mudafoto")){
-            proximaPagina = "/admin/painel/teste.jsp";            
+            proximaPagina = "/admin/painel/modal_formFotoPerfil.jsp";            
         }
 
         //PARA DIRECIONAR AS PAGINAS PARA O LOCAL CERTO.
