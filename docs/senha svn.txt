@@ -3,3 +3,14 @@ https://portifolio-frank.googlecode.com/svn/trunk/
 senha: tr5DP3Xh6sS5
 
 teste de modif
+
+============ GIT ================
+
+Gerar chave ssh
+ssh-keygen -t rsa -b 4096 -C "frankutio@gmail.com"
+
+Acessar o diretório da chave
+cd ~/.ssh
+
+Exibir a chave
+cat id_rsa.pub
